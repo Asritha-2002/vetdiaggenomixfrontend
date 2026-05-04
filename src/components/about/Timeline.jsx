@@ -4,7 +4,7 @@ import flag from "../../assets/about/Vector (3).png";
 import microscope from "../../assets/about/Microscope.png";
 import iso from "../../assets/about/iso.png";
 import labicon from "../../assets/about/Rectangle 165.png";
-import india from "../../assets/about/India.png";
+import india from "../../assets/about/India.png"
 
 
 const Timeline = () => {
