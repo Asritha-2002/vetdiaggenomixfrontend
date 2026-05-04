@@ -1,10 +1,10 @@
 import React, { memo } from "react";
 import homehero from "../../assets/home/home-hero.png";
 import { NavLink } from "react-router-dom";
-import star1 from "../../assets/home/star 2.png";
-import star2 from "../../assets/home/star 3.png";
-import star3 from "../../assets/home/star 4.png";
-import star4 from "../../assets/home/star 5.png";
+import star1 from "../../assets/home/Star 2.png";
+import star2 from "../../assets/home/Star 3.png";
+import star3 from "../../assets/home/Star 4.png";
+import star4 from "../../assets/home/Star 5.png";
 
 const HeroSection = () => {
   return (

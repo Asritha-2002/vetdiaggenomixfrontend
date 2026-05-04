@@ -1,4 +1,4 @@
-import rectangle1 from "../assets/home/Rectangle.png"
+import rectangle1 from "../assets/home/Rectangle 38 (6).png"
 import rectangle2 from "../assets/home/Rectangle 38 (1).png"
 import rectangle3 from "../assets/home/Rectangle 38 (2).png"
 import rectangle4 from "../assets/home/Rectangle 38 (3).png"
