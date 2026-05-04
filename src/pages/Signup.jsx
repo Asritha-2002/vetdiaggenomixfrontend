@@ -123,6 +123,11 @@ const Signup = () => {
           
           {/* Name */}
           <div className="flex flex-col gap-1">
+
+            <div className="flex flex-col gap-1.5">
+            <label htmlFor="name" className="text-sm font-medium">
+    Full Name
+  </label>
             <div className={`relative flex items-center border rounded-lg ${errors.name ? 'border-red-500' : 'border-gray-300'}`}>
               <User size={18} className="absolute left-3 text-gray-400" />
               <input
@@ -136,9 +141,13 @@ const Signup = () => {
             </div>
             {errors.name && <span className="text-[10px] text-red-500 ml-1">{errors.name}</span>}
           </div>
-
+</div>
           {/* Email */}
           <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="text-sm font-medium">
+    Email Address
+  </label>
             <div className={`relative flex items-center border rounded-lg ${errors.email ? 'border-red-500' : 'border-gray-300'}`}>
               <Mail size={18} className="absolute left-3 text-gray-400" />
               <input
@@ -152,9 +161,15 @@ const Signup = () => {
             </div>
             {errors.email && <span className="text-[10px] text-red-500 ml-1">{errors.email}</span>}
           </div>
+          </div>
 
           {/* Phone */}
           <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="phone" className="text-sm font-medium">
+    Phone Number
+  </label>
+            
             <div className={`relative flex items-center border rounded-lg ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}>
               <Phone size={18} className="absolute left-3 text-gray-400" />
               <input
@@ -168,9 +183,15 @@ const Signup = () => {
             </div>
             {errors.phone && <span className="text-[10px] text-red-500 ml-1">{errors.phone}</span>}
           </div>
+          </div>
 
           {/* Password */}
           <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="password" className="text-sm font-medium">
+    Password
+  </label>
+           
             <div className={`relative flex items-center border rounded-lg ${errors.password ? 'border-red-500' : 'border-gray-300'}`}>
               <Lock size={18} className="absolute left-3 text-gray-400" />
               <input
@@ -188,9 +209,15 @@ const Signup = () => {
             <p className="text-[10px] ml-1">Password must contain 8 characters</p>
             {errors.password && <span className="text-[10px] text-red-500 ml-1">{errors.password}</span>}
           </div>
+           </div>
 
           {/* Confirm Password */}
           <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="confirmPassword" className="text-sm font-medium">
+   Confirm Password
+  </label>
+            
             <div className={`relative flex items-center border rounded-lg ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}>
               <Lock size={18} className="absolute left-3 text-gray-400" />
               <input
@@ -203,6 +230,7 @@ const Signup = () => {
               />
             </div>
             {errors.confirmPassword && <span className="text-[10px] text-red-500 ml-1">{errors.confirmPassword}</span>}
+          </div>
           </div>
 
           {/* Button */}
