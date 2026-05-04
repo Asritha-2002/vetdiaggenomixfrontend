@@ -1,22 +1,22 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import Navbar from "../pages/Navbar.jsx";
-import Footer from "../pages/Footer.jsx";
+import Navbar from "../pages/Navbar";
+import Footer from "../pages/Footer";
 
 // eager (above fold)
-import HeroSection from "./home/HeroSection.jsx";
-import WhoWeAre from "./home/WhoWeAre.jsx";
-import ProcessSection from "./home/ProcessSection.jsx";
-import AppointmentCTA from "./home/AppointmentCTA.jsx";
+import HeroSection from "./home/HeroSection";
+import WhoWeAre from "./home/WhoWeAre";
+import ProcessSection from "./home/ProcessSection";
+import AppointmentCTA from "./home/AppointmentCTA";
 
 // lazy sections (below fold)
-const SpecialServices = lazy(() => import("./home/SpecialServices.jsx"));
-const StatsSection = lazy(() => import("./home/StatsSection.jsx"));
-const Testimonials = lazy(() => import("./home/Testimonials.jsx"));
+const SpecialServices = lazy(() => import("./home/SpecialServices"));
+const StatsSection = lazy(() => import("./home/StatsSection"));
+const Testimonials = lazy(() => import("./home/Testimonials"));
 
-import SpecialServicesSkeleton from "../skeleton/SpecialServicesSkeleton.jsx";
-import TestimonialsSkeleton from "../skeleton/TestimonialsSkeleton.jsx";
+import SpecialServicesSkeleton from "../skeleton/SpecialServicesSkeleton";
+import TestimonialsSkeleton from "../skeleton/TestimonialsSkeleton";
 
 
 /* ---------------- Intersection Observer Hook ---------------- */
