@@ -69,4 +69,4 @@ const HeroSection = () => {
   );
 };
 
-export default memo(HeroSection);
+export default HeroSection;
