@@ -1,26 +1,34 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import hero2 from "../../assets/hero-sections-contact/contactsectionbgc-1.png";
 import titleimg2 from "../../assets/home/second-sec-tit.png";
 import image1 from "../../assets/home/image 4.png";
 import image2 from "../../assets/home/image 5.png";
 import image3 from "../../assets/home/image 6.png";
 import image4 from "../../assets/home/image 7.png";
-import p1 from "../../assets/home/01 1.png";
-import p8 from "../../assets/home/01 2.png";
-import p7 from "../../assets/home/01 3.png";
-// import p4 from "../../assets/home/01 4.png";
-// import p5 from "../../assets/home/01 5.png";
-import p9 from "../../assets/home/01 6.png";
-import p10 from "../../assets/home/01 7.png";
 
-import p2 from "../../assets/home/p2.jpg";
-import p3 from "../../assets/home/p3.jpg";
-import p4 from "../../assets/home/p4.jpg";
-import p5 from "../../assets/home/p5.jpg";
-import p6 from "../../assets/home/p6.jpg";
-// import p7 from "../../assets/home/p7.jpg";
+// Base API link configuration
+const BASE_URL = import.meta.env.VITE_BASE_URL_ADMIN;
 
 const StatsSection = () => {
+  const [partners, setPartners] = useState([]);
+
+  // Fetch live partner logos from the database
+  useEffect(() => {
+    const fetchPartners = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/upload/partners`);
+        const result = await response.json();
+        if (response.ok && result.data) {
+          setPartners(result.data);
+        }
+      } catch (error) {
+        console.error("FAILED TO FETCH PARTNER LOGOS:", error);
+      }
+    };
+
+    fetchPartners();
+  }, []);
+
   return (
     <div className="relative w-full h-auto pb-10 overflow-hidden antialiased">
 
@@ -96,36 +104,34 @@ const StatsSection = () => {
           advance animal health
         </p>
 
-        {/* PARTNERS */}
-       <div className="overflow-hidden w-full">
-  <div className="flex gap-10 items-center animate-scroll whitespace-nowrap">
+        {/* PARTNERS INFINITE SCROLL */}
+        <div className="overflow-hidden w-full">
+          {partners.length > 0 && (
+            <div className="flex gap-10 items-center animate-scroll whitespace-nowrap">
+              
+              {/* Set 1: Original map tracking API URLs */}
+              {partners.map((partner, idx) => (
+                <img 
+                  key={`orig-${partner._id || idx}`} 
+                  src={partner.url} 
+                  alt={partner.name || "partner"} 
+                  className="w-[150px] h-[120px] object-contain" 
+                />
+              ))}
 
-    <img src={p1} alt="partner" className="w-[200px] h-[100px] object-contain" />
-    <img src={p2} alt="partner" className="w-[130px] h-[150px] object-contain" />
-    <img src={p3} alt="partner" className="w-[160px] h-[150px] object-contain" />
-    <img src={p4} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p5} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p6} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p7} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p8} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p9} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p10} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    
+              {/* Set 2: Duplicate map to preserve the seamless CSS loop */}
+              {partners.map((partner, idx) => (
+                <img 
+                  key={`dup-${partner._id || idx}`} 
+                  src={partner.url} 
+                  alt={partner.name || "partner"} 
+                  className="w-[150px] h-[120px] object-contain" 
+                />
+              ))}
 
-    {/* duplicate for seamless loop */}
-    <img src={p1} alt="partner" className="w-[200px] h-[100px] object-contain" />
-    <img src={p2} alt="partner" className="w-[130px] h-[150px] object-contain" />
-    <img src={p3} alt="partner" className="w-[160px] h-[150px] object-contain" />
-    <img src={p4} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p5} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p6} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p7} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p8} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p9} alt="partner" className="w-[150px] h-[120px] object-contain" />
-    <img src={p10} alt="partner" className="w-[150px] h-[120px] object-contain" />
-
-  </div>
-</div>
+            </div>
+          )}
+        </div>
 
       </div>
     </div>

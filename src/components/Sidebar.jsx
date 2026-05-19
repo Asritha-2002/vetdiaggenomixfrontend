@@ -9,8 +9,9 @@ import {
   FaChartLine,
   FaCalendarAlt,
   
+  
 } from "react-icons/fa";
-import { Store } from "lucide-react";
+import { Store , ImagePlus} from "lucide-react";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
@@ -37,6 +38,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       color: "from-emerald-500 to-emerald-600",
       activeDot: true,
     },
+    {
+  name: "Media & Partners",
+  icon: <ImagePlus size={18} />,
+  path: "/admin/mediapartners",
+  color: "from-emerald-500 to-emerald-600",
+  activeDot: true,
+},
     {
       name: "Appointments",
       icon: (

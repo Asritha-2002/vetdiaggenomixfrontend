@@ -27,17 +27,6 @@ const AdminNavbar = ({ toggleSidebar }) => {
             >
               <FaBars className="text-sm" />
             </button>
-
-            {/* Search */}
-            {/* <div className="hidden md:flex items-center bg-white/50 backdrop-blur-sm rounded-2xl px-4 py-2 border border-white/30">
-              <FaSearch className="text-gray-400 mr-3 text-sm" />
-              <input
-                type="text"
-                placeholder="Search..."
-                disabled
-                className="bg-transparent outline-none text-gray-700 placeholder-gray-400 w-64"
-              />
-            </div> */}
           </div>
 
           {/* RIGHT */}

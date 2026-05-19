@@ -55,7 +55,7 @@ const Footer = () => {
             
             <li>
               {/* Parent */}
-              <div
+             {/*} <div
                 className="flex items-center justify-between cursor-pointer"
                 onClick={() => setFooterServiceOpen(!footerServiceOpen)}
               >
@@ -72,7 +72,7 @@ const Footer = () => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </div>*}
 
               {/* Sub Services */}
               {/* <div

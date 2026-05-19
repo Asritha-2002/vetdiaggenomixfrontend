@@ -1,121 +1,129 @@
 import React, { useState } from "react";
-import { Mail } from "lucide-react";
-import key from "../assets/user/key.png";
-import bg from "../assets/hero-sections-contact/contactsectionbgc-1.png";
-import axios from "axios";
-import toast from "react-hot-toast"; // ✅ added
+import { Mail, KeyRound } from "lucide-react";
 import { NavLink } from "react-router-dom";
-const BASE_URL=import.meta.env.VITE_BASE_URL;
+import axios from "axios";
+import toast from "react-hot-toast";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState({ email: "" });
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // ✅ added
+  const [formData, setFormData] = useState({ email: "" });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  // ✅ Handle change (validates using regex)
   const handleChange = (e) => {
     const value = e.target.value;
-    setEmail({ email: value });
+    setFormData({ email: value });
 
     if (!emailRegex.test(value)) {
-      setError("Please enter a valid email address.");
+      setErrors({ email: "Please enter a valid email address." });
     } else {
-      setError("");
+      setErrors({});
     }
   };
 
+  // ✅ Handle submit (calls the API)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!emailRegex.test(email.email)) {
-      setError("Please enter a valid email address.");
+    if (!emailRegex.test(formData.email)) {
+      setErrors({ email: "Please enter a valid email address." });
       return;
     }
 
-    setLoading(true); // ✅ start loading
+    setLoading(true);
 
     try {
       const response = await axios.post(
         `${BASE_URL}/auth/forgot-password`,
-        email
+        formData
       );
 
-      toast.success(response.data.message || "Verification code sent"); // ✅ toast
-
-      setEmail({ email: "" }); // optional reset
+      toast.success(response.data.message || "Verification code sent");
+      
+      setFormData({ email: "" }); // optional reset
 
     } catch (err) {
       if (err.response && err.response.data) {
-        toast.error(err.response.data.message); // ✅ toast error
+        toast.error(err.response.data.message);
       } else {
         toast.error("Something went wrong. Try again later.");
       }
     } finally {
-      setLoading(false); // ✅ stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <div
-      style={{ backgroundImage: `url(${bg})` }}
-      className="min-h-screen bg-center bg-cover flex items-center justify-center p-4"
-    >
+    <div className="min-h-screen bg-center bg-cover flex items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-8">
-        
-        <div className="flex justify-center mb-4">
-          <img src={key} alt="" />
+        <div className="flex justify-center mb-3">
+          <div className="bg-[#457358] p-3 rounded-full">
+            <KeyRound className="w-8 h-8 text-[#FFFFFF]" />
+          </div>
         </div>
-
+        
         <h2 className="text-xl font-bold text-gray-900 text-center mb-2">
           Forget Password?
         </h2>
+
         <p className="text-sm text-center mb-6">
           Enter your registered email and we’ll send you a reset link.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          
+          {/* Email */}
           <div className="flex flex-col gap-1">
             <label className="text-sm font-semibold text-gray-800 ml-1">
               Email Address
             </label>
+
             <div
               className={`relative flex items-center border rounded-lg ${
-                error ? "border-red-500" : "border-gray-300"
+                errors.email ? "border-red-500" : "border-gray-300"
               }`}
             >
               <Mail size={18} className="absolute left-3 text-gray-400" />
+
               <input
                 type="email"
-                placeholder="Enter Your Email Address"
-                value={email.email}
+                value={formData.email}
                 onChange={handleChange}
+                placeholder="Enter Your Email Address"
                 className="w-full pl-10 pr-4 py-2 text-sm outline-none rounded-lg"
-                required
               />
             </div>
-            {error && (
-              <span className="text-[10px] text-red-500 ml-1">{error}</span>
+
+            {errors.email && (
+              <span className="text-[10px] text-red-500 ml-1">
+                {errors.email}
+              </span>
             )}
           </div>
 
           {/* Button */}
           <button
             type="submit"
-            disabled={loading} // ✅ disable click
-            className={`w-full font-bold py-2.5 rounded-lg bg-[#b50b0b] text-white 
-  ${loading ? "opacity-70 cursor-not-allowed" : ""}`}
+            disabled={loading}
+            className={`w-full font-bold py-2.5 rounded-lg text-white transition cursor-pointer ${
+              loading
+                ? "bg-[#d46a6a] cursor-not-allowed"
+                : "bg-[#002b0a] hover:bg-[#457358]"
+            }`}
           >
-            {loading ? "Sending..." : "Send Verification email"} {/* ✅ text change */}
+            {loading ? "Sending..." : "Send Verification Email"}
           </button>
 
+          {/* Back */}
           <NavLink
-  to="/sign-in"
-  className="block w-full text-center border border-[#b50b0b] text-[#b50b0b] font-semibold py-2.5 rounded-lg transition-colors hover:bg-[#b50b0b] hover:text-white"
->
-  Back to Login
-</NavLink>
+            to="/sign-in"
+            className="cursor-pointer block w-full text-center border border-[#002b0a] text-[#002b0a] font-semibold py-2.5 rounded-lg transition hover:bg-[#457358] hover:text-white"
+          >
+            Back to Login
+          </NavLink>
         </form>
       </div>
     </div>

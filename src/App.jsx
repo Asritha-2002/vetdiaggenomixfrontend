@@ -41,6 +41,7 @@ import AdminOrders from "./pages/AdminOrders.jsx";
 import CallInvoice from "./components/CallInvoice.jsx";
 import { WhatsAppFloat } from "./components/WhatsAppFloat.jsx";
 import ScrollToTop from "./pages/ScrollToTop.jsx";
+import ManageMediaPartners from "./pages/ManageMediaPartners.jsx";
 
 /* ================= ROUTE WRAPPER ================= */
 const RouteLoader = ({ children }) => {
@@ -176,6 +177,8 @@ function App() {
             <Route path="vouchers" element={<Voucher/>}/>
             <Route path="shop-details" element={<ShopDetails/>}/>
             <Route path="orders" element={<AdminOrders/>}/>
+            <Route path="mediapartners" element={<ManageMediaPartners/>}/>
+
           </Route>
 
 
