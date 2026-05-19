@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { User, Mail, Phone, Lock, Eye, EyeOff } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { validateForm } from "../utils/validation";
 import toast from "react-hot-toast";
 import axios from "axios"; // ✅ Added axios import
 
