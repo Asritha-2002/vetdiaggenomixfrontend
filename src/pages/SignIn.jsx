@@ -131,7 +131,7 @@ const handleSubmit = async (e) => {
           </span>
         </p>
 
-        <div className="w-full flex items-center my-3">
+        {/* <div className="w-full flex items-center my-3">
           <div className="flex-grow border-t border-gray-300"></div>
           <span className="px-3 text-s font-medium">or</span>
           <div className="flex-grow border-t border-gray-300"></div>
@@ -144,7 +144,7 @@ const handleSubmit = async (e) => {
             className="w-5 h-5"
           />
           <span className="text-gray-700 font-semibold text-sm">Continue with Google</span>
-        </button>
+        </button> */}
       </div>
     </div>
   );
