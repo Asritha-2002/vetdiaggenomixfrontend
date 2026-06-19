@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import footerlogo from "../assets/navbar-images/logo.png";
-import logo from "../assets/footer/footer-logo.png";
 import footerarrow from "../assets/footer/footer-arrow.png";
-import footercall from "../assets/footer/footer-call.png";
-import footerlocation from "../assets/footer/footer-location.png";
-import footermail from "../assets/footer/footer-mail.png";
-import { ChevronDown, ChevronRight } from "lucide-react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import {
   FaFacebookF,
@@ -17,16 +12,17 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
-  const [footerServiceOpen, setFooterServiceOpen] = useState(false);
   return (
     <div className="">
       <section className="bg-[#f0eff0]">
         <div className="flex flex-col mx-8 py-4 md:flex-row md:items-center gap-[10px] md:gap-[30px] lg:gap-[40px] lg:ml-20">
           <img
-            src={footerlogo}
-            alt=""
-            className="w-[280px] md:w-[240px] lg:w-[320px]"
-          />
+  src={footerlogo}
+  alt="VetDiag Genomix Logo"
+  width="320"
+  height="120"
+  className="w-[280px] md:w-[240px] lg:w-[320px]"
+/>
           <div className="hidden md:block border-1 h-16 border-[#dddcdd]"></div>
           <div>
             <h2 className="text-md md:text-1xl lg:text-2xl font-bold">
@@ -229,9 +225,10 @@ const Footer = () => {
             <div className="flex gap-4">
               <div className="bg-[#b50b0b] text-white p-3 rounded-full">
                 <a
-                  href="https://www.facebook.com/profile.php?id=61557282387566#"
+                  href="https://www.facebook.com/profile.php?id=61557282387566"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit our Facebook page"
                 >
                   <FaFacebookF />
                 </a>
@@ -242,6 +239,7 @@ const Footer = () => {
                   href="https://x.com/VetdiaggGenomix"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit our Twitter page"
                 >
                   <FaTwitter />
                 </a>
@@ -252,6 +250,7 @@ const Footer = () => {
                   href="https://www.linkedin.com/in/vetdiag-genomix-private-limited-046a1a315/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit our Linkedin page"
                 >
                     <FaLinkedinIn />
                 </a>
@@ -262,6 +261,7 @@ const Footer = () => {
                   href="https://www.youtube.com/@vetdiggenomix"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit our YouTube channel"
                 >
                   <FaYoutube />
                 </a>
@@ -272,6 +272,7 @@ const Footer = () => {
                   href="https://www.instagram.com/vetdiaggenomix/?__d=dist"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit our Instagram page"
                 >
                   <FaInstagram />
                 </a>

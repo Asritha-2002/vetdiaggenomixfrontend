@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import PageSkeleton from "./skeleton/PageSkeleton.jsx";
-import AdminProfile from "./pages/AdminProfile.jsx";
-import AdminLayout from "./layout/AdminLayout.jsx";
+const AdminLayout = lazy(() => import("./layout/AdminLayout.jsx"));
+const AdminProfile = lazy(() => import("./pages/AdminProfile.jsx"));
 
 /* ================= LAZY ROUTES ================= */
 const Contact = lazy(() => import("./components/Contact.jsx"));
@@ -24,26 +24,24 @@ const RecetPassword = lazy(() => import("./pages/RecetPassword.jsx"));
 const SuccessPasswordRecet = lazy(() => import("./pages/SuccessPasswordRecet.jsx"));
 const FailPasswordRecet = lazy(() => import("./pages/FailPasswordRecet.jsx"));
 const Profile = lazy(() => import("./components/Profile.jsx"));
-import UserManagement from "./pages/UserManagementPage.jsx";
-import Appointments from "./pages/Appointments.jsx";
-import Products from "./pages/Products.jsx";
-
-import ProductDetailPage from "./pages/ProductDetailPage.jsx";
-import Cart from "./pages/Cart.jsx";
-import AddressPage from "./pages/checkout/AddressPage.jsx";
-import CheckoutLayout from "./pages/checkout/CheckoutLayout.jsx";
+const UserManagement = lazy(() => import("./pages/UserManagementPage.jsx"));
+const Appointments = lazy(() => import("./pages/Appointments.jsx"));
+const Products = lazy(() => import("./pages/Products.jsx"));
+const ProductDetailPage = lazy(() => import("./pages/ProductDetailPage.jsx"));
+const Cart = lazy(() => import("./pages/Cart.jsx"));
+const AddressPage = lazy(() => import("./pages/checkout/AddressPage.jsx"));
+const CheckoutLayout = lazy(() => import("./pages/checkout/CheckoutLayout.jsx"));
+const OrderSummaryPage = lazy(() => import("./pages/checkout/OrderSummaryPage.jsx"));
+const Voucher = lazy(() => import("./pages/Voucher.jsx"));
+const ShopDetails = lazy(() => import("./pages/ShopDetails.jsx"));
+const AdminOrders = lazy(() => import("./pages/AdminOrders.jsx"));
+const CallInvoice = lazy(() => import("./components/CallInvoice.jsx"));
+const ManageMediaPartners = lazy(() => import("./pages/ManageMediaPartners.jsx"));
+const AuthCallback = lazy(() => import("./pages/AuthCallback.jsx"));
+const Achievements = lazy(() => import("./pages/ManageAchievements.jsx"));
 import { CheckoutProvider } from "./context/CheckoutContext.jsx";
-import OrderSummaryPage from "./pages/checkout/OrderSummaryPage.jsx";
-import Voucher from "./pages/Voucher.jsx";
-import ShopDetails from "./pages/ShopDetails.jsx";
-import AdminRoutes from "./pages/AdminOrders.jsx"
-import AdminOrders from "./pages/AdminOrders.jsx";
-import CallInvoice from "./components/CallInvoice.jsx";
-import { WhatsAppFloat } from "./components/WhatsAppFloat.jsx";
 import ScrollToTop from "./pages/ScrollToTop.jsx";
-import ManageMediaPartners from "./pages/ManageMediaPartners.jsx";
-import AuthCallback from "./pages/AuthCallback.jsx";
-import Achievements from "./pages/ManageAchievements.jsx";
+import { WhatsAppFloat } from "./components/WhatsAppFloat.jsx";
 
 /* ================= ROUTE WRAPPER ================= */
 const RouteLoader = ({ children }) => {
@@ -55,7 +53,6 @@ function App() {
     <BrowserRouter>
       <Toaster position="top-center" />
 
-      <CheckoutProvider>
         <WhatsAppFloat/>
         <ScrollToTop/>
         <Routes>
@@ -165,13 +162,15 @@ function App() {
 
           {/* ADMIN */}
           <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminLayout />
-              </ProtectedRoute>
-            }
-          >
+  path="/admin"
+  element={
+    <RouteLoader>
+      <ProtectedRoute>
+        <AdminLayout />
+      </ProtectedRoute>
+    </RouteLoader>
+  }
+>
             <Route index element={<AdminProfile />} />
             <Route path="dashboard" element={<AdminProfile />} />
             <Route path="users" element={<UserManagement />} />
@@ -189,7 +188,7 @@ function App() {
 
 <Route path="sample" element={<CallInvoice/>}/>
         </Routes>
-      </CheckoutProvider>
+      
 
       
 

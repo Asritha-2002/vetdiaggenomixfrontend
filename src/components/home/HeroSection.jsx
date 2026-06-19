@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import homehero from "../../assets/home/home-hero.png";
+import homehero from "../../assets/home/home-hero.webp";
 import { NavLink } from "react-router-dom";
 import star1 from "../../assets/home/Star 2.png";
 import star2 from "../../assets/home/Star 3.png";
