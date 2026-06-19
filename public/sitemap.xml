@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.vetdiaggenomix.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.vetdiaggenomix.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vetdiaggenomix.com/shop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vetdiaggenomix.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Hematology -->
+  <url><loc>https://www.vetdiaggenomix.com/services/cbc</loc><priority>0.7</priority></url>
+
+  <!-- Biochemistry -->
+  <url><loc>https://www.vetdiaggenomix.com/services/kft</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/lft</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ast</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/urea</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/t4</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/totalt4</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/t3</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/tsh</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/thyroidProfile</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ldh</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/rbs</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/sl</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/sa</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/b12</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/d</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/troponinI</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/troponinT</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/progesterone</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/crp</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/calcium</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/sodium</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/potassium</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/cpl</loc><priority>0.7</priority></url>
+
+  <!-- Molecular Biology -->
+  <url><loc>https://www.vetdiaggenomix.com/services/cdv</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ctfpbg</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ctfpbc</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ctfpbr</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ctfpbv</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ctfphc</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ctfpec</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ctfpap</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/ap</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/fiv</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/felv</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/babesiafelis</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/anaplasmaphagocytophilum</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/calicivirus</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/fip</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/cpv</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/leptospira</loc><priority>0.7</priority></url>
+
+  <!-- Histopathology -->
+  <url><loc>https://www.vetdiaggenomix.com/services/histopathology</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/biopsy</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/fnac</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/abst</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/abstAnaerobic</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/sse</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/fungalCulture</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/bacterialCulture</loc><priority>0.7</priority></url>
+
+  <!-- Top-level / PCR family -->
+  <url><loc>https://www.vetdiaggenomix.com/services/pcr</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/rtpcr</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/cbp</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/act</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/plt</loc><priority>0.7</priority></url>
+  <url><loc>https://www.vetdiaggenomix.com/services/pet</loc><priority>0.7</priority></url>
+
+</urlset>

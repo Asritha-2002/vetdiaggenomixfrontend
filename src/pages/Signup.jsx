@@ -262,7 +262,29 @@ const Signup = () => {
             Sign In
           </NavLink>
         </p>
+
+        {/* <div className="w-full flex items-center my-4">
+          <div className="flex-grow h-px bg-gray-300"></div>
+          <span className="px-3 text-sm">or</span>
+          <div className="flex-grow h-px bg-gray-300"></div>
+        </div>
+        <button
+  type="button"
+  onClick={() => {
+    window.location.href = `${BASE_URL}/auth/google`;
+  }}
+  className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-semibold"
+>
+  <img
+    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+    alt="G"
+    className="w-4 h-4"
+  />
+  Continue with Google
+</button> */}
       </div>
+
+      
     </div>
   );
 };

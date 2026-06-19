@@ -42,6 +42,8 @@ import CallInvoice from "./components/CallInvoice.jsx";
 import { WhatsAppFloat } from "./components/WhatsAppFloat.jsx";
 import ScrollToTop from "./pages/ScrollToTop.jsx";
 import ManageMediaPartners from "./pages/ManageMediaPartners.jsx";
+import AuthCallback from "./pages/AuthCallback.jsx";
+import Achievements from "./pages/ManageAchievements.jsx";
 
 /* ================= ROUTE WRAPPER ================= */
 const RouteLoader = ({ children }) => {
@@ -74,6 +76,7 @@ function App() {
           <Route path="/sign-in" element={
             <RouteLoader><SignIn /></RouteLoader>
           } />
+          <Route path="/auth/callback" element={<AuthCallback />} />
 
           <Route path="/forget-password" element={
             <RouteLoader><ForgotPassword /></RouteLoader>
@@ -178,6 +181,8 @@ function App() {
             <Route path="shop-details" element={<ShopDetails/>}/>
             <Route path="orders" element={<AdminOrders/>}/>
             <Route path="mediapartners" element={<ManageMediaPartners/>}/>
+            <Route path="achievements" element={<Achievements/>}/>
+            
 
           </Route>
 

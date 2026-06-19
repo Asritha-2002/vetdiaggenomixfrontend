@@ -17,6 +17,7 @@ const Testimonials = lazy(() => import("./home/Testimonials"));
 
 import SpecialServicesSkeleton from "../skeleton/SpecialServicesSkeleton";
 import TestimonialsSkeleton from "../skeleton/TestimonialsSkeleton";
+import Achievements from "./home/Achievements";
 
 
 /* ---------------- Intersection Observer Hook ---------------- */
@@ -73,6 +74,7 @@ const Home = () => {
           <SpecialServices />
         </Suspense>
       </LazySection>
+      <Achievements/>
 
       <AppointmentCTA />
 

@@ -59,6 +59,7 @@ const ProcessSection = () => {
               decoding="async"
               loading="lazy"
               className="w-[150px]"
+              alt="Collect of blood sample image"
             />
             <p>Collect of Blood Sample</p>
           </div>
@@ -68,6 +69,7 @@ const ProcessSection = () => {
             decoding="async"
             loading="lazy"
             className="w-[50px] rotate-90 lg:rotate-0 lg:mb-6"
+            alt="Arrow icon"
           />
 
           <div className="flex flex-col items-center text-center">
@@ -76,6 +78,7 @@ const ProcessSection = () => {
               decoding="async"
               loading="lazy"
               className="w-[150px]"
+              alt="Extraction of dna image"
             />
             <p>Extraction of DNA</p>
           </div>
@@ -85,6 +88,7 @@ const ProcessSection = () => {
             decoding="async"
             loading="lazy"
             className="w-[50px] rotate-90 lg:rotate-0 lg:mb-6"
+            alt="Arrow icon"
           />
 
           <div className="flex flex-col items-center text-center">
@@ -93,6 +97,7 @@ const ProcessSection = () => {
               decoding="async"
               loading="lazy"
               className="w-[150px]"
+              alt="PCR amplification image"
             />
             <p>PCR Amplification</p>
           </div>
@@ -102,6 +107,7 @@ const ProcessSection = () => {
             decoding="async"
             loading="lazy"
             className="w-[50px] rotate-90 lg:rotate-0 lg:mb-6"
+            alt="Arrow icon"
           />
 
           <div className="flex flex-col items-center text-center">
@@ -110,6 +116,7 @@ const ProcessSection = () => {
               decoding="async"
               loading="lazy"
               className="w-[150px]"
+              alt="Get reports image"
             />
             <p>Get Reports</p>
           </div>

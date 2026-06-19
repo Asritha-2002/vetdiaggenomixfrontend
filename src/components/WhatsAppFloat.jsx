@@ -15,8 +15,10 @@ export const WhatsAppFloat = () => {
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-5 right-5 z-50"
+      aria-label="Chat with us on WhatsApp"
+      
     >
-      <img src={whatsapp} className="w-14 h-14 hover:scale-110 transition" />
+      <img src={whatsapp} className="w-14 h-14 hover:scale-110 transition" alt="Chat on WhatsApp" />
     </a>
   );
 };

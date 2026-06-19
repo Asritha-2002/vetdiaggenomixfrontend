@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /sign-in
+Disallow: /sign-up
+Disallow: /forget-password
+Disallow: /profile
+Disallow: /cart
+Disallow: /checkout
+
+Sitemap: https://www.vetdiaggenomix.com/sitemap.xml

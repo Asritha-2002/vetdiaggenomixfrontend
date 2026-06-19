@@ -11,7 +11,7 @@ import {
   
   
 } from "react-icons/fa";
-import { Store , ImagePlus} from "lucide-react";
+import { Store , ImagePlus,Trophy} from "lucide-react";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
@@ -43,6 +43,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   icon: <ImagePlus size={18} />,
   path: "/admin/mediapartners",
   color: "from-emerald-500 to-emerald-600",
+  activeDot: true,
+},
+{
+  name: "Achievements",
+  icon: <Trophy size={18} />,
+  path: "/admin/achievements",
+  color: "from-amber-500 to-yellow-600",
   activeDot: true,
 },
     {

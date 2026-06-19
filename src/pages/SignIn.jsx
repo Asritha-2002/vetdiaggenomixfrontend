@@ -6,11 +6,13 @@ import toast from "react-hot-toast";
 import bg from "../assets/hero-sections-contact/contactsectionbgc-1.png"
 import profile from "../assets/navbar-images/profile.png";
 const BASE_URL=import.meta.env.VITE_BASE_URL;
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+const location = useLocation();
   // ✅ Controlled form state
   const [formData, setFormData] = useState({
     email: '',
@@ -55,6 +57,25 @@ const handleSubmit = async (e) => {
     toast.error(err.response?.data?.message || "Something went wrong");
   }
 };
+
+useEffect(() => {
+  const params = new URLSearchParams(location.search);
+  const status = params.get("status");
+  const error  = params.get("error");
+  const email  = params.get("email");
+
+  if (status === "verify_email") {
+    toast.success(
+      `Account created! We sent a verification link to ${decodeURIComponent(email || "your email")}. Please verify before signing in.`,
+      { duration: 6000 }
+    );
+  }
+
+  if (error === "google_failed") {
+    toast.error("Google sign-in failed. Please try again.");
+  }
+}, []);
+
 
   return (
     <div style={{backgroundImage:`url(${bg})`}} className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center">
@@ -131,20 +152,28 @@ const handleSubmit = async (e) => {
           </span>
         </p>
 
-        {/* <div className="w-full flex items-center my-3">
-          <div className="flex-grow border-t border-gray-300"></div>
-          <span className="px-3 text-s font-medium">or</span>
-          <div className="flex-grow border-t border-gray-300"></div>
+         {/* <div className="w-full flex items-center my-4">
+          <div className="flex-grow h-px bg-gray-300"></div>
+          <span className="px-3 text-sm">or</span>
+          <div className="flex-grow h-px bg-gray-300"></div>
         </div>
 
-        <button className="w-full flex items-center justify-center gap-3 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-50 transition-colors">
-          <img 
-            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" 
-            alt="google" 
-            className="w-5 h-5"
-          />
-          <span className="text-gray-700 font-semibold text-sm">Continue with Google</span>
-        </button> */}
+<button
+  type="button"
+  onClick={() => {
+    window.location.href = `${BASE_URL}/auth/google`;
+  }}
+  className="w-full flex items-center justify-center gap-3 border border-gray-300 py-2.5 rounded-lg hover:bg-gray-50 transition"
+>
+  <img
+    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+    alt="google"
+    className="w-5 h-5"
+  />
+  <span className="text-gray-700 font-semibold text-sm">
+    Continue with Google
+  </span>
+</button> */}
       </div>
     </div>
   );

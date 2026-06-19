@@ -1,0 +1,6 @@
+# VetDiag Genomix
+
+> Accurate animal health testing by Vetdiag Genomix. Book appointments for diagnostic tests — fast, reliable, vet-trusted results.
+
+## Pages
+- [Home](https://vetdiaggenomix.com)
