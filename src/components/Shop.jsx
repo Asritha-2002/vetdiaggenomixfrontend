@@ -7,7 +7,7 @@ import Navbar from "../pages/Navbar";
 import Footer from "../pages/Footer";
 import ShopHero from "./shop/ShopHero";
 import ShopProducts from "./shop/ShopProducts";
-
+import SEO from "./SEO"
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Shop = () => {
@@ -37,6 +37,12 @@ const Shop = () => {
   }, []);
 
   return (
+   <>
+   <SEO
+        title="About Us | Vetdiag Genomix - Veterinary Diagnostic Lab Vijayawada"
+        description="Learn about Vetdiag Genomix, Andhra Pradesh's first veterinary diagnostic center, our mission, and our team of experts."
+        path="/about"
+      />
     <div className="bg-gray-50 min-h-screen">
       <Navbar />
 
@@ -98,6 +104,7 @@ const Shop = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

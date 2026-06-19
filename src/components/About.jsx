@@ -8,6 +8,7 @@ import Gallary from "./about/Gallary";
 const Accreditations = lazy(() => import("../components/about/Accreditations"));
 const Experts = lazy(() => import("../components/about/Experts"));
 const Timeline = lazy(() => import("../components/about/Timeline"));
+import SEO from "./SEO"
 // const Gallery = lazy(() => import("../components/about/Gallery"));
 
 const SectionSkeleton = () => (
@@ -21,6 +22,12 @@ const SectionSkeleton = () => (
 
 const About = () => {
   return (
+   <>
+   <SEO
+        title="About Us | Vetdiag Genomix - Veterinary Diagnostic Lab Vijayawada"
+        description="Learn about Vetdiag Genomix, Andhra Pradesh's first veterinary diagnostic center, our mission, and our team of experts."
+        path="/about"
+      />
     <div className="bg-white overflow-x-hidden">
 
       {/* STATIC LAYER (no Suspense delay) */}
@@ -48,6 +55,7 @@ const About = () => {
       <Footer />
 
     </div>
+   </>
   );
 };
 

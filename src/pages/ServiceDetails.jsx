@@ -5,7 +5,7 @@ import Footer from "./Footer.jsx";
 import serviceData from "../data/serviceData.js";
 import contacthero from "../assets/hero-sections-contact/contactsectionbgc-1.png";
 import { FaCheck } from "react-icons/fa";
-
+import SEO from "../components/SEO.jsx"
 const ServiceDetails = () => {
   const { serviceName } = useParams();
 
@@ -83,7 +83,11 @@ const ServiceDetails = () => {
   return (
     <>
       <Navbar />
-
+       <SEO
+        title={`${title} | Vetdiag Genomix - Veterinary Diagnostic Lab Vijayawada`}
+        description={description}
+        path={`/services/${serviceName}`}
+      />
       {/* BACKGROUND SECTION (GPU optimized) */}
       <div
         className="pb-8 will-change-transform"
