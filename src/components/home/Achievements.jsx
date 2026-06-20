@@ -390,11 +390,11 @@ const Achievements = () => {
           {/* Heading */}
           <div className="flex flex-col items-center gap-3">
             <div className="flex gap-2 md:gap-4 items-center justify-center">
-              <img src={titleimg2} alt="section icon" decoding="async" className="w-5 h-5" />
+              <img src={titleimg2} alt="section icon" decoding="async" className="w-5 h-auto" />
               <h2 className="text-2xl md:text-4xl font-bold">
                 <span className="text-[#b50b0b]">Our</span> Achievements
               </h2>
-              <img src={titleimg2} alt="section icon" decoding="async" className="w-5 h-5" />
+              <img src={titleimg2} alt="section icon" decoding="async" className="w-5 h-auto" />
             </div>
             <p className="text-xl lg:text-3xl font-semibold text-center max-w-xl mx-auto">
               Milestones that reflect our commitment to excellence

@@ -45,7 +45,7 @@ const HeroSection = () => {
               Book Appointment
             </NavLink>
 
-            <NavLink to="/shop" className="text-[#b50b0b] bg-white px-4 py-2 rounded cursor:pointer md:whitespace-nowrap">
+            <NavLink to="/shop" className="text-[#b50b0b] bg-white px-6 py-3 rounded cursor:pointer md:whitespace-nowrap">
               Book A Rapid Test Kit
             </NavLink>
           </div>

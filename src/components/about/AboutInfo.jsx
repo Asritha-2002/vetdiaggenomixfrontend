@@ -27,7 +27,7 @@ const AboutInfo = () => {
             loading="lazy"
             decoding="async"
             
-            className="w-5 h-5"
+            className="w-5 h-auto"
           />
 
           <h2 className="text-xl md:text-4xl font-bold">
@@ -39,7 +39,7 @@ const AboutInfo = () => {
             alt="section icon"
             loading="lazy"
             decoding="async"
-            className="w-5 h-5"
+            className="w-5 h-auto"
           />
         </div>
 

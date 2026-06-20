@@ -86,13 +86,13 @@ const StatsSection = () => {
       <div className="relative z-10 flex flex-col gap-4 items-center justify-center mt-5">
 
         <div className="flex gap-2 md:gap-4 items-center justify-center mt-5">
-          <img src={titleimg2} alt="icon" decoding="async" loading="lazy" className="w-5 h-5" />
+          <img src={titleimg2} alt="icon" decoding="async" loading="lazy" className="w-5 h-auto" />
 
           <h3 className="text-3xl md:text-4xl font-bold">
             <span className="text-[#b50b0b]">Our</span> Network
           </h3>
 
-          <img src={titleimg2} alt="icon" decoding="async" loading="lazy" className="w-5 h-5" />
+          <img src={titleimg2} alt="icon" decoding="async" loading="lazy" className="w-5 h-auto" />
         </div>
 
         <h2 className="text-3xl md:text-4xl font-semibold">

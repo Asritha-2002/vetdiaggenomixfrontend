@@ -18,9 +18,9 @@ const Gallery = () => {
 
       {/* HEADER */}
       <div className="flex gap-2 md:gap-4 items-center justify-center">
-        <img src={titleimg2} alt="left-logo" className="w-5 h-5" />
+        <img src={titleimg2} alt="left-logo" className="w-5 h-auto" />
         <h2 className="text-2xl md:text-4xl font-bold">Gallery</h2>
-        <img src={titleimg2} alt="right-logo" className="w-5 h-5" />
+        <img src={titleimg2} alt="right-logo" className="w-5 h-auto" />
       </div>
 
       {/* ================= MOBILE UI ================= */}

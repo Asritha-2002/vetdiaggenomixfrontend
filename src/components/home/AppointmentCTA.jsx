@@ -45,7 +45,7 @@ const AppointmentCTA = () => {
 
           <NavLink
             to="/book-appointment"
-            className="bg-white text-[#b50b0b] rounded py-2 px-4 whitespace-nowrap"
+            className="bg-white text-[#b50b0b] rounded py-3 px-6 whitespace-nowrap"
           >
             Book Appointment
           </NavLink>

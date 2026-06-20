@@ -15,7 +15,7 @@ const Timeline = () => {
               <img
                 src={titleimg2}
                 alt="logo"
-                className="w-5 h-5"
+                className="w-5 h-auto"
               />
               <h2 className="text-xl md:text-4xl font-bold">
                 <span className="text-[#b50b0b]">Showcasing</span> Our
@@ -24,7 +24,7 @@ const Timeline = () => {
               <img
                 src={titleimg2}
                 alt="logo"
-                className="w-5 h-5"
+                className="w-5 h-auto"
               />
             </div>
 

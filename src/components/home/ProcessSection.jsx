@@ -26,8 +26,9 @@ const ProcessSection = () => {
         <div className="flex gap-2 md:gap-4 items-center justify-center">
           <img
             src={third1}
-            alt="left-logo"
-            className="w-5 h-5 lg:mt-0"
+            alt="section icon"
+            decoding="async"
+            className="w-5 h-auto"
           />
 
           <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -36,8 +37,9 @@ const ProcessSection = () => {
 
           <img
             src={third1}
-            alt="right-logo"
-            className="w-5 h-5 lg:mt-0"
+            alt="section icon"
+            decoding="async"
+            className="w-5 h-auto"
           />
         </div>
 

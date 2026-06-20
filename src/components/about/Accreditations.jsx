@@ -39,7 +39,7 @@ const Accreditations = () => {
             alt="logo"
             loading="lazy"
             decoding="async"
-            className="w-5 h-5"
+            className="w-5 h-auto"
           />
 
           <h2 className="text-2xl md:text-4xl font-bold">
@@ -53,7 +53,7 @@ const Accreditations = () => {
             height="20"
             loading="lazy"
             decoding="async"
-            className="w-5 h-5"
+            className="w-5 h-auto"
           />
         </div>
 

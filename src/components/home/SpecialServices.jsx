@@ -28,7 +28,7 @@ const SpecialServices = () => {
             src={titleimg2}
             alt="section icon"
             decoding="async"
-            className="w-5 h-5"
+            className="w-5 h-auto"
           />
 
           <h2 className="text-2xl md:text-4xl font-bold">
@@ -39,7 +39,7 @@ const SpecialServices = () => {
             src={titleimg2}
             alt="section icon"
             decoding="async"
-            className="w-5 h-5"
+            className="w-5 h-auto"
           />
         </div>
 

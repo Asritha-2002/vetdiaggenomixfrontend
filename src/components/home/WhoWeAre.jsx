@@ -22,11 +22,15 @@ const WhoWeAre = () => {
 
         {/* TITLE */}
         <div className="flex gap-2 md:gap-4 items-center justify-center">
-          <img src={titleimg2} alt="left-logo" className="w-5 h-5" />
+          <img src={titleimg2} alt="section icon"
+            decoding="async"
+            className="w-5 h-auto" />
           <h2 className="text-3xl md:text-4xl font-bold">
             <span className="text-[#b50b0b]">Who</span> We Are
           </h2>
-          <img src={titleimg2} alt="right-logo" className="w-5 h-5" />
+          <img src={titleimg2} alt="section icon"
+            decoding="async"
+            className="w-5 h-auto" />
         </div>
 
         {/* MAIN CONTENT */}

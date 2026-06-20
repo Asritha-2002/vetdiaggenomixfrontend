@@ -590,7 +590,7 @@ const CONTACT_INDEX = 4;
 
             {/* RIGHT */}
             <div className="flex items-center gap-4">
-              <button className="bg-[#b50b0b] text-white px-6 py-3 rounded cursor:pointer">
+              <button className="bg-[#b50b0b] text-white px-4 py-2 rounded cursor:pointer">
                 <NavLink to="/book-appointment">Book Appointment</NavLink>
               </button>
 
