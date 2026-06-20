@@ -1,11 +1,11 @@
 import React, { memo } from "react";
 import hero3 from "../../assets/home/Rectangle 22.png";
-import third1 from "../../assets/home/third1.png";
-import third2 from "../../assets/home/third2.png";
-import third3 from "../../assets/home/third3.png";
-import third4 from "../../assets/home/third4.png";
-import third5 from "../../assets/home/third5.png";
-import third6 from "../../assets/home/third6.png";
+import third1 from "../../assets/home/third1.webp";
+import third2 from "../../assets/home/third2.webp";
+import third3 from "../../assets/home/third3.webp";
+import third4 from "../../assets/home/third4.webp";
+import third5 from "../../assets/home/third5.webp";
+import third6 from "../../assets/home/third6.webp";
 
 const ProcessSection = () => {
   return (

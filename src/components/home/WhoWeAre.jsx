@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import hero2 from "../../assets/hero-sections-contact/contactsectionbgc-1.png";
 import titleimg2 from "../../assets/home/second-sec-tit.png";
-import secsecimg from "../../assets/home/secsecimg.png";
+import secsecimg from "../../assets/home/secsecimg.webp";
 import secsec from "../../assets/home/secsec.png";
 
 const WhoWeAre = () => {
