@@ -18,7 +18,7 @@ const Testimonials = lazy(() => import("./home/Testimonials"));
 import SpecialServicesSkeleton from "../skeleton/SpecialServicesSkeleton";
 import TestimonialsSkeleton from "../skeleton/TestimonialsSkeleton";
 import Achievements from "./home/Achievements";
-
+import SEO from "./SEO"
 
 /* ---------------- Intersection Observer Hook ---------------- */
 const useInView = (options = { threshold: 0.15 }) => {
@@ -56,6 +56,12 @@ const LazySection = ({ children }) => {
 
 const Home = () => {
   return (
+    <>
+    <SEO
+  title="Vetdiag Genomix – Veterinary Diagnostic Lab | Vijayawada"
+  description="Accurate animal health testing by Vetdiag Genomix. Book appointments for diagnostic tests — fast, reliable, vet-trusted results."
+  path="/"
+/>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -91,7 +97,7 @@ const Home = () => {
       </LazySection>
 
       <Footer />
-    </motion.div>
+    </motion.div></>
   );
 };
 
