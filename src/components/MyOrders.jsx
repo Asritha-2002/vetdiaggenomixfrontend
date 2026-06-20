@@ -365,7 +365,7 @@ const MyOrders = () => {
                     </div>
 
                     <button
-                      className="bg-[#b50b0b] text-white px-4 py-2 rounded cursor-pointer self-start sm:self-auto flex items-center gap-2"
+                      className="bg-[#b50b0b] text-white px-6 py-3 rounded cursor-pointer self-start sm:self-auto flex items-center gap-2"
                       onClick={() => navigate(`/product/${item?.book?._id}`)}
                     >
                       <RotateCw size={16} />

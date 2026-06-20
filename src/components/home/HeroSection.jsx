@@ -40,7 +40,7 @@ const HeroSection = () => {
           <div className="w-full md:w-1/2 flex flex-col lg:flex-row gap-4">
             <NavLink
               to="/book-appointment"
-              className="bg-[#b50b0b] text-white px-4 py-2 rounded text-center md:whitespace-nowrap"
+              className="bg-[#b50b0b] text-white px-6 py-3 rounded text-center md:whitespace-nowrap"
             >
               Book Appointment
             </NavLink>

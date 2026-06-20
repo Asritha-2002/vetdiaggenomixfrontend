@@ -70,7 +70,8 @@ const Home = () => {
       <Navbar />
 
       {/* ABOVE FOLD (NO LAZY LOADING) */}
-      <HeroSection />
+     <main>
+       <HeroSection />
       <WhoWeAre />
       <ProcessSection />
 
@@ -95,6 +96,7 @@ const Home = () => {
         <Testimonials />
       </Suspense>
       </LazySection>
+     </main>
 
       <Footer />
     </motion.div></>

@@ -44,12 +44,12 @@ const WhoWeAre = () => {
           {/* TEXT CONTENT */}
           <div className="max-w-lg text-center lg:text-left">
 
-            <h4 className="font-semibold mb-3 text-xl lg:text-xl">
+            <h3 className="font-semibold mb-3 text-xl lg:text-xl">
               Welcome to{" "}
               <span className="text-[#b50b0b]">VetDiag Genomix</span>,
               dedicated to providing accurate and advanced molecular
               diagnostic services.
-            </h4>
+            </h3>
 
             <p className="mb-4 text-xs">
               At VetDiag Genomix, we believe that precision diagnostics
@@ -64,7 +64,7 @@ const WhoWeAre = () => {
             <div className="space-y-3 flex flex-col items-center lg:items-start">
 
               <div className="flex items-center gap-2 bg-[#eef7ff] p-3 w-[300px] rounded-md">
-                <img src={secsec} alt="" className="w-[20px] md:w-[30px]" />
+                <img src={secsec} alt="" aria-hidden="true" className="w-[20px] md:w-[30px]" />
                 <p className="text-xs md:text-md font-semibold">
                   Advanced Molecular Diagnostics
                 </p>

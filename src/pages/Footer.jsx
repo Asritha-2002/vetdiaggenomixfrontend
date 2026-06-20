@@ -284,10 +284,10 @@ const Footer = () => {
       </section>
       <section className="bg-[#f0eff0]">
         <div className="flex flex-col text-xs items-center gap-[5px] py-2 md:flex-row justify-between px-8">
-          <p className="text-[#787878]">
+          <p className="text-[#4b5563]">
             <span className="font-semibold">CIN:</span> U75000AP2024PTC114031
           </p>
-          <p className="text-[#787878]">
+          <p className="text-[#4b5563]">
             © 2024 VetDiag Genomix Pvt Ltd | Privacy Policy | Terms of Service
           </p>
         </div>
