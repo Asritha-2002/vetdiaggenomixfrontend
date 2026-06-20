@@ -4,7 +4,7 @@ import { useCheckout } from "../../context/CheckoutContext";
 import { Trash2, Truck, ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SummaryStepper from "../../components/checkout/SummaryStepper";
-
+import { loadRazorpay } from "../../utils/loadRazorpay";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const VITE_ORDERS_URL = import.meta.env.VITE_ORDERS_URL;
 
@@ -132,6 +132,12 @@ const [paymentData, setPaymentData] = useState(null);
 
   const handlePayment = async () => {
     try {
+      const loaded = await loadRazorpay();
+
+if (!loaded) {
+  alert("Failed to load Razorpay SDK");
+  return;
+}
       const token = localStorage.getItem("token");
 
       // 🟢 1. Create order in backend

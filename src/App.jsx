@@ -41,7 +41,11 @@ const AuthCallback = lazy(() => import("./pages/AuthCallback.jsx"));
 const Achievements = lazy(() => import("./pages/ManageAchievements.jsx"));
 import { CheckoutProvider } from "./context/CheckoutContext.jsx";
 import ScrollToTop from "./pages/ScrollToTop.jsx";
-import { WhatsAppFloat } from "./components/WhatsAppFloat.jsx";
+const WhatsAppFloat = lazy(() =>
+  import("./components/WhatsAppFloat.jsx").then(module => ({
+    default: module.WhatsAppFloat,
+  }))
+);
 
 /* ================= ROUTE WRAPPER ================= */
 const RouteLoader = ({ children }) => {
@@ -148,12 +152,15 @@ function App() {
 
           {/* CHECKOUT */}
           <Route path="/checkout" element={
-            <RouteLoader>
-              <ProtectedRoute>
-                <CheckoutLayout />
-              </ProtectedRoute>
-            </RouteLoader>
-          }>
+  <RouteLoader>
+    <ProtectedRoute>
+      <CheckoutProvider>       {/* ← add this */}
+        <CheckoutLayout />
+      </CheckoutProvider>       {/* ← close here */}
+    </ProtectedRoute>
+  </RouteLoader>
+}>
+            
 
             <Route index element={<AddressPage />} />
             <Route path="summary" element={<OrderSummaryPage />} />

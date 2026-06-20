@@ -28,6 +28,7 @@ const specialServices=[
         title:"Veterinary Hematology",
         image:rectangle1,
         logo:right1,
+        link:"/services/cbc",
         placeholderImage:down1,
         description:"Comprehensive blood analysis including CBC, blood chemistry, and specialized hematology tests. Helps diagnose, monitor, and manage a wide range of animal health conditions."
     },
@@ -36,6 +37,7 @@ const specialServices=[
         title:"Clinical Biochemistry",
         image:rectangle2,
         logo:right2,
+        link:"/services/kft",
         placeholderImage:down2,
         description:"Advanced biochemical testing to evaluate organ function, including liver, kidney, and metabolic profiles. Supports accurate diagnosis and helps veterinarians plan effective treatments and ongoing care."
     },
@@ -44,6 +46,7 @@ const specialServices=[
         title:"Molecular Biology - RT-PCR",
         image:rectangle3,
         logo:right3,
+         link:"/services/cdv",
         placeholderImage:down3,
         description:"State-of-the-art molecular diagnostics using RT-PCR technology for pathogen detection, genetic screening, and disease identification. Delivers rapid and reliable results for timely clinical decisions."
     },
@@ -53,6 +56,7 @@ const specialServices=[
         image:rectangle4,
         logo:right4,
         placeholderImage:down4,
+        link:"/services/rtpcr",
         description:"High-precision molecular testing using PCR and RT-PCR techniques to detect pathogens and genetic conditions. Ensures early diagnosis and supports accurate, timely treatment planning."
     },
     {
@@ -61,6 +65,7 @@ const specialServices=[
         image:rectangle5,
         logo:right5,
         placeholderImage:down5,
+        link:"/services/histopathology",
         description:"Detailed analysis of tissues and body fluids to diagnose diseases and evaluate health conditions in animals. Provides critical insights into disease progression and supports clinical decision-making."
     },
     {
@@ -69,6 +74,7 @@ const specialServices=[
         image:rectangle6,
         logo:right6,
         placeholderImage:down6,
+        link:"/services/act",
         description:"Advanced testing to identify bacterial, viral, and fungal infections in animals. Helps determine the exact cause of infections and enables targeted and effective treatment strategies."
     },
     {
@@ -77,6 +83,7 @@ const specialServices=[
         image:rectangle7,
         logo:right7,
         placeholderImage:down7,
+         link:"/services/fnac",
         description:"Comprehensive examination of blood, tissues, and organs to detect abnormalities and disease conditions. Supports preventive care, diagnosis, and ongoing monitoring of animal health."
     }
 

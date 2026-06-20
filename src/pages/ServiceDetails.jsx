@@ -6,6 +6,7 @@ import serviceData from "../data/serviceData.js";
 import contacthero from "../assets/hero-sections-contact/contactsectionbgc-1.png";
 import { FaCheck } from "react-icons/fa";
 import SEO from "../components/SEO.jsx"
+import RelatedServices from "../components/RelatedServices.jsx"
 const ServiceDetails = () => {
   const { serviceName } = useParams();
 
@@ -163,6 +164,7 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
+       <RelatedServices categoryName={categoryName} currentKey={key} />
 
       <Footer />
     </>

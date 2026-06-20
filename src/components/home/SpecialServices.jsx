@@ -2,7 +2,7 @@ import React, { memo, useMemo } from "react";
 import hero2 from "../../assets/hero-sections-contact/contactsectionbgc-1.png";
 import titleimg2 from "../../assets/home/second-sec-tit.png";
 import specialServices from "../../data/specialServices.js";
-
+import { Link } from "react-router-dom";
 const SpecialServices = () => {
 
   // prevent unnecessary recalculation on re-render
@@ -51,10 +51,11 @@ const SpecialServices = () => {
         <div className="max-w-8xl mx-auto px-4 flex flex-wrap justify-center gap-6">
 
           {services.map((item) => (
-            <div
-              key={item.id}
-              className="w-[300px] bg-white rounded-xl shadow-md overflow-hidden relative"
-            >
+            <Link
+  key={item.id}
+  to={item.link}
+  className="w-[300px] bg-white rounded-xl shadow-md overflow-hidden relative block cursor-pointer hover:shadow-xl transition-all duration-300"
+>
 
               {/* IMAGE */}
               <div className="relative p-4">
@@ -98,7 +99,7 @@ const SpecialServices = () => {
                 />
               </div>
 
-            </div>
+            </Link>
           ))}
 
         </div>
