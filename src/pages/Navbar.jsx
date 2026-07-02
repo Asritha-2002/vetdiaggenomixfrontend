@@ -20,29 +20,16 @@ const Navbar = () => {
   const navRef = useRef([]);
   const indicatorRef = useRef(null);
   const location = useLocation();
-  const [openMenu, setOpenMenu] = useState(null);
-  const [openSubMenu, setOpenSubMenu] = useState(null);
 
   const [mobileMenu, setMobileMenu] = useState("");
   const [mobileSubMenu, setMobileSubMenu] = useState("");
   const [cartCount, setCartCount] = useState(0);
   const navigate = useNavigate();
   const HOME_INDEX = 0;
-const ABOUT_INDEX = 1;
-const SERVICES_INDEX = 2;
-const SHOP_INDEX = 3;
-const CONTACT_INDEX = 4;
-
-  const toggleMenu = (menu) => {
-    setOpenMenu(openMenu === menu ? null : menu);
-
-    // optional: reset sub menu when switching main
-    setOpenSubMenu(null);
-  };
-
-  const toggleSubMenu = (menu) => {
-    setOpenSubMenu(openSubMenu === menu ? null : menu);
-  };
+  const ABOUT_INDEX = 1;
+  const SERVICES_INDEX = 2;
+  const SHOP_INDEX = 3;
+  const CONTACT_INDEX = 4;
 
   const links = [
     { name: "Home", path: "/" },
@@ -61,39 +48,35 @@ const CONTACT_INDEX = 4;
     "/services/pet",
   ];
 
- useEffect(() => {
-  let activeIndex = -1;
+  useEffect(() => {
+    let activeIndex = -1;
 
-  if (location.pathname === "/") {
-    activeIndex = 0;
-  } 
-  else if (location.pathname === "/about") {
-    activeIndex = 1;
-  } 
-  else if (serviceRoutes.includes(location.pathname)) {
-    activeIndex = 2;
-  } 
-  else if (
-    location.pathname.startsWith("/shop") ||
-    location.pathname.startsWith("/product")
-  ) {
-    activeIndex = 3;
-  } 
-  else if (location.pathname === "/contact") {
-    activeIndex = 4;
-  }
+    if (location.pathname === "/") {
+      activeIndex = 0;
+    } else if (location.pathname === "/about") {
+      activeIndex = 1;
+    } else if (serviceRoutes.includes(location.pathname)) {
+      activeIndex = 2;
+    } else if (
+      location.pathname.startsWith("/shop") ||
+      location.pathname.startsWith("/product")
+    ) {
+      activeIndex = 3;
+    } else if (location.pathname === "/contact") {
+      activeIndex = 4;
+    }
 
-  const el = navRef.current[activeIndex];
+    const el = navRef.current[activeIndex];
 
-  if (el && indicatorRef.current) {
-    const parent = el.closest("header");
-    const parentLeft = parent.getBoundingClientRect().left;
-    const elLeft = el.getBoundingClientRect().left;
+    if (el && indicatorRef.current) {
+      const parent = el.closest("header");
+      const parentLeft = parent.getBoundingClientRect().left;
+      const elLeft = el.getBoundingClientRect().left;
 
-    indicatorRef.current.style.left = elLeft - parentLeft + "px";
-    indicatorRef.current.style.width = el.offsetWidth + "px";
-  }
-}, [location.pathname]);
+      indicatorRef.current.style.left = elLeft - parentLeft + "px";
+      indicatorRef.current.style.width = el.offsetWidth + "px";
+    }
+  }, [location.pathname]);
 
   const fetchCartCount = async () => {
     try {
@@ -106,10 +89,8 @@ const CONTACT_INDEX = 4;
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log("CART RESPONSE:", res.data);
       const items = res.data.data?.items || [];
 
-      // total quantity count (not just item count)
       const totalQty = items.reduce((sum, item) => sum + item.quantity, 0);
 
       setCartCount(totalQty);
@@ -162,8 +143,7 @@ const CONTACT_INDEX = 4;
                   </li>
                 ))}
 
-                {/* SERVICES */}
-
+                {/* SERVICES — MEGA MENU */}
                 <li
                   ref={(el) => (navRef.current[2] = el)}
                   className="relative group px-2 py-1"
@@ -173,388 +153,348 @@ const CONTACT_INDEX = 4;
                     <ChevronDown size={16} className="mt-1" />
                   </span>
 
-                  {/* MAIN DROPDOWN (hover controlled) */}
-                  <div className="absolute top-8 left-0 hidden group-hover:block bg-white shadow-lg rounded p-3 w-72">
-                    {/* Hematology */}
+                  {/* MEGA DROPDOWN PANEL (hover controlled) */}
+                  <div
+                    className="absolute top-8 left-1/2 -translate-x-1/2 hidden group-hover:grid
+                    grid-cols-5 gap-6 bg-white shadow-xl rounded-lg p-6
+                    w-[95vw] max-w-6xl border border-gray-100 text-sm"
+                  >
+                    {/* ---------- HEMATOLOGY ---------- */}
                     <div>
-                      <div
-                        onClick={() => toggleMenu("hematology")}
-                        className="flex justify-between items-center cursor-pointer py-1 hover:text-[#b50b0b]"
-                      >
-                        Hematology{" "}
-                        <span>{openMenu === "hematology" ? "▾" : "▸"}</span>
-                      </div>
-
-                      {openMenu === "hematology" && (
-                        <div className="ml-4">
-                          <NavLink to="/services/cbc" className="block py-1">
-                            Complete Blood Count (CBC)
+                      <h4 className="font-semibold text-[#b50b0b] mb-2 pb-2 border-b border-gray-200">
+                        Hematology
+                      </h4>
+                      <ul className="space-y-1.5">
+                        <li>
+                          <NavLink
+                            to="/services/cbc"
+                            className="block py-1 hover:text-[#b50b0b]"
+                          >
+                            Complete Blood Count
                           </NavLink>
-                        </div>
-                      )}
+                        </li>
+                      </ul>
                     </div>
 
+                    {/* ---------- BIOCHEMISTRY ---------- */}
                     <div>
-                      <div
-                        onClick={() => toggleMenu("biochemistry")}
-                        className="flex justify-between items-center cursor-pointer py-1 hover:text-[#b50b0b]"
-                      >
-                        Biochemistry{" "}
-                        <span>{openMenu === "biochemistry" ? "▾" : "▸"}</span>
-                      </div>
-
-                      {openMenu === "biochemistry" && (
-                        <div className="ml-4 max-h-60 overflow-y-auto">
-                          <NavLink to="/services/kft" className="block py-1">
-                            Kidney Function Test (KFT)
+                      <h4 className="font-semibold text-[#b50b0b] mb-2 pb-2 border-b border-gray-200">
+                        Biochemistry
+                      </h4>
+                      <ul className="space-y-1.5 max-h-96 overflow-y-auto pr-2">
+                        <li>
+                          <NavLink to="/services/kft" className="block py-1 hover:text-[#b50b0b]">
+                            Kidney Function Test
                           </NavLink>
-
-                          <NavLink to="/services/lft" className="block py-1">
-                            Liver Function Test (LFT)
+                        </li>
+                        <li>
+                          <NavLink to="/services/lft" className="block py-1 hover:text-[#b50b0b]">
+                            Liver Function Test
                           </NavLink>
-
-                          <NavLink to="/services/ast" className="block py-1">
-                            AST / ALT / ALP / Total Protein / Albumin /
-                            Bilirubin
+                        </li>
+                        <li>
+                          <NavLink to="/services/ast" className="block py-1 hover:text-[#b50b0b]">
+                            AST / ALT / ALP / Total Protein / Albumin / Bilirubin
                           </NavLink>
-
-                          <NavLink to="/services/urea" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/urea" className="block py-1 hover:text-[#b50b0b]">
                             Serum Creatinine / Urea / Uric Acid
                           </NavLink>
-
-                          <NavLink to="/services/t3" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/t3" className="block py-1 hover:text-[#b50b0b]">
                             Canine Specific T3
                           </NavLink>
-
-                          <NavLink to="/services/tsh" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/tsh" className="block py-1 hover:text-[#b50b0b]">
                             Canine Specific TSH
                           </NavLink>
-
-                          <NavLink to="/services/t4" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/t4" className="block py-1 hover:text-[#b50b0b]">
                             Free T4
                           </NavLink>
-                          <NavLink
-                            to="/services/totalt4"
-                            className="block py-1"
-                          >
+                        </li>
+                        <li>
+                          <NavLink to="/services/totalt4" className="block py-1 hover:text-[#b50b0b]">
                             Total T4
                           </NavLink>
-                          <NavLink
-                            to="/services/thyroidProfile"
-                            className="block py-1"
-                          >
-                            Complete Thyroid Profile (Free T4, Total T4, T3,
-                            TSH)
+                        </li>
+                        <li>
+                          <NavLink to="/services/thyroidProfile" className="block py-1 hover:text-[#b50b0b]">
+                            Complete Thyroid Profile (Free T4, Total T4, T3, TSH)
                           </NavLink>
-
-                          <NavLink to="/services/ldh" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/ldh" className="block py-1 hover:text-[#b50b0b]">
                             LDH - Lactate Dehydrogenase
                           </NavLink>
-
-                          <NavLink to="/services/rbs" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/rbs" className="block py-1 hover:text-[#b50b0b]">
                             Random Blood Sugar
                           </NavLink>
-
-                          <NavLink to="/services/sl" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/sl" className="block py-1 hover:text-[#b50b0b]">
                             Serum Lipase
                           </NavLink>
-
-                          <NavLink to="/services/sa" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/sa" className="block py-1 hover:text-[#b50b0b]">
                             Serum Analysis
                           </NavLink>
-
-                          <NavLink to="/services/b12" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/b12" className="block py-1 hover:text-[#b50b0b]">
                             Vitamin B12
                           </NavLink>
-
-                          <NavLink to="/services/d" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/d" className="block py-1 hover:text-[#b50b0b]">
                             Vitamin D
                           </NavLink>
-                          <NavLink
-                            to="/services/troponinI"
-                            className="block py-1"
-                          >
+                        </li>
+                        <li>
+                          <NavLink to="/services/troponinI" className="block py-1 hover:text-[#b50b0b]">
                             Cardiac Troponin I
                           </NavLink>
-                          <NavLink
-                            to="/services/troponinT"
-                            className="block py-1"
-                          >
+                        </li>
+                        <li>
+                          <NavLink to="/services/troponinT" className="block py-1 hover:text-[#b50b0b]">
                             Cardiac Troponin T
                           </NavLink>
-                          <NavLink
-                            to="/services/progesterone"
-                            className="block py-1"
-                          >
+                        </li>
+                        <li>
+                          <NavLink to="/services/progesterone" className="block py-1 hover:text-[#b50b0b]">
                             Progesterone Test
                           </NavLink>
-                          <NavLink to="/services/crp" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/crp" className="block py-1 hover:text-[#b50b0b]">
                             C-Reactive Protein (CRP)
                           </NavLink>
-                          <NavLink
-                            to="/services/calcium"
-                            className="block py-1"
-                          >
+                        </li>
+                        <li>
+                          <NavLink to="/services/calcium" className="block py-1 hover:text-[#b50b0b]">
                             Serum Calcium Test
                           </NavLink>
-                          <NavLink to="/services/sodium" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/sodium" className="block py-1 hover:text-[#b50b0b]">
                             Serum Sodium Test
                           </NavLink>
-                          <NavLink
-                            to="/services/potassium"
-                            className="block py-1"
-                          >
+                        </li>
+                        <li>
+                          <NavLink to="/services/potassium" className="block py-1 hover:text-[#b50b0b]">
                             Serum Potassium Test
                           </NavLink>
-                          <NavLink to="/services/ldh" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/ldh" className="block py-1 hover:text-[#b50b0b]">
                             Lactate Dehydrogenase (LDH)
                           </NavLink>
-                          <NavLink to="/services/cpl" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/cpl" className="block py-1 hover:text-[#b50b0b]">
                             Canine Pancreatic Lipase (cPL)
                           </NavLink>
-                        </div>
-                      )}
+                        </li>
+                      </ul>
                     </div>
 
+                    {/* ---------- MOLECULAR BIOLOGY - RT PCR ---------- */}
                     <div>
-                      <div
-                        onClick={() => toggleMenu("molecular")}
-                        className="flex justify-between items-center cursor-pointer py-1 hover:text-[#b50b0b]"
-                      >
+                      <h4 className="font-semibold text-[#b50b0b] mb-2 pb-2 border-b border-gray-200">
                         Molecular Biology - RT PCR
-                        <span>{openMenu === "molecular" ? "▾" : "▸"}</span>
-                      </div>
-
-                      {openMenu === "molecular" && (
-                        <div className="ml-4 max-h-60 overflow-y-auto">
-                          {/* CDV */}
-                          <NavLink to="/services/cdv" className="block py-1">
+                      </h4>
+                      <ul className="space-y-1.5 max-h-96 overflow-y-auto pr-2">
+                        <li>
+                          <NavLink to="/services/cdv" className="block py-1 hover:text-[#b50b0b]">
                             Canine Distemper Virus - RT-PCR
                           </NavLink>
+                        </li>
 
-                          {/* Tick Fever Panel */}
-                          <div>
-                            <div
-                              onClick={() => toggleSubMenu("tick")}
-                              className="flex justify-between items-center cursor-pointer py-1 hover:text-[#b50b0b]"
-                            >
-                              Canine Tick Fever Panel -Babesia gibsoni 4
-                              <span>{openSubMenu === "tick" ? "▾" : "▸"}</span>
-                            </div>
+                        <li className="pt-2 font-medium text-gray-700">
+                          Canine Tick Fever Panel - Babesia gibsoni 4
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/ctfpbc" className="block py-1 hover:text-[#b50b0b]">
+                            Babesia Canis
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/ctfpbr" className="block py-1 hover:text-[#b50b0b]">
+                            Babesia Rossi
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/ctfpbv" className="block py-1 hover:text-[#b50b0b]">
+                            Babesia Vogeli
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/ctfphc" className="block py-1 hover:text-[#b50b0b]">
+                            Hepatozoon Canis
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/ctfpec" className="block py-1 hover:text-[#b50b0b]">
+                            Ehrlichia Canis
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/ctfpap" className="block py-1 hover:text-[#b50b0b]">
+                            Anaplasma Platys
+                          </NavLink>
+                        </li>
 
-                            {openSubMenu === "tick" && (
-                              <div className="ml-4">
-                                {/* <NavLink to="/services/ctfc-2" className="block py-1">
-              Tick Fever Panel - 2 Organisms
-            </NavLink>
-
-            <NavLink to="/services/ctfc-4" className="block py-1">
-              Tick Fever Panel - 4 Organisms
-            </NavLink> */}
-
-                                {/* <NavLink to="/services/ctfc-7" className="block py-1">
-              Tick Fever Panel - 7 Organisms
-            </NavLink> */}
-
-                                <NavLink
-                                  to="/services/ctfpbc"
-                                  className="block py-1"
-                                >
-                                  Babesia Canis
-                                </NavLink>
-                                <NavLink
-                                  to="/services/ctfpbr"
-                                  className="block py-1"
-                                >
-                                  Babesia Rossi
-                                </NavLink>
-
-                                <NavLink
-                                  to="/services/ctfpbv"
-                                  className="block py-1"
-                                >
-                                  Babesia Vogeli
-                                </NavLink>
-                                {/* <NavLink to="/services/ctfpbg" className="block py-1">
-              Babesia Gibsoni
-            </NavLink> */}
-
-                                <NavLink
-                                  to="/services/ctfphc"
-                                  className="block py-1"
-                                >
-                                  Hepatozoon Canis
-                                </NavLink>
-
-                                <NavLink
-                                  to="/services/ctfpec"
-                                  className="block py-1"
-                                >
-                                  Ehrlichia Canis
-                                </NavLink>
-
-                                <NavLink
-                                  to="/services/ctfpap"
-                                  className="block py-1"
-                                >
-                                  Anaplasma Platys
-                                </NavLink>
-                              </div>
-                            )}
-                          </div>
-
-                          {/* Other Tests */}
-                          <NavLink to="/services/ap" className="block py-1">
+                        <li>
+                          <NavLink to="/services/ap" className="block py-1 hover:text-[#b50b0b]">
                             Anaplasma Phagocytophilum
                           </NavLink>
+                        </li>
 
-                          <div>
-                            <div
-                              onClick={() => toggleSubMenu("feline")}
-                              className="flex justify-between items-center cursor-pointer py-1 hover:text-[#b50b0b]"
-                            >
-                              Feline Panel-Mycoplasma haemofelis
-                              <span>
-                                {openSubMenu === "feline" ? "▾" : "▸"}
-                              </span>
-                            </div>
-
-                            {openSubMenu === "feline" && (
-                              <div className="ml-4">
-                                <NavLink
-                                  to="/services/fiv"
-                                  className="block py-1"
-                                >
-                                  Feline Immunodeficiency Virus (FIV)
-                                </NavLink>
-                                <NavLink
-                                  to="/services/felv"
-                                  className="block py-1"
-                                >
-                                  Feline Leukemia Virus (FeLV)
-                                </NavLink>
-
-                                <NavLink
-                                  to="/services/babesiafelis"
-                                  className="block py-1"
-                                >
-                                  Feline Babesia felis
-                                </NavLink>
-                                <NavLink
-                                  to="/services/anaplasmaphagocytophilum"
-                                  className="block py-1"
-                                >
-                                  Feline Anaplasma phagocytophilum
-                                </NavLink>
-
-                                <NavLink
-                                  to="/services/calicivirus"
-                                  className="block py-1"
-                                >
-                                  Feline Calicivirus (FCV)
-                                </NavLink>
-
-                                <NavLink
-                                  to="/services/fip"
-                                  className="block py-1"
-                                >
-                                  Feline Infectious Peritonitis (FIP)
-                                </NavLink>
-                              </div>
-                            )}
-                          </div>
-
-                          <NavLink to="/services/cpv" className="block py-1">
-                            Canine Parvovirus (CPV)
+                        <li className="pt-2 font-medium text-gray-700">
+                          Feline Panel - Mycoplasma haemofelis
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/fiv" className="block py-1 hover:text-[#b50b0b]">
+                            Feline Immunodeficiency Virus
                           </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/felv" className="block py-1 hover:text-[#b50b0b]">
+                            Feline Leukemia Virus
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/babesiafelis" className="block py-1 hover:text-[#b50b0b]">
+                            Feline Babesia felis
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/anaplasmaphagocytophilum" className="block py-1 hover:text-[#b50b0b]">
+                            Feline Anaplasma phagocytophilum
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/calicivirus" className="block py-1 hover:text-[#b50b0b]">
+                            Feline Calicivirus
+                          </NavLink>
+                        </li>
+                        <li className="pl-3">
+                          <NavLink to="/services/fip" className="block py-1 hover:text-[#b50b0b]">
+                            Feline Infectious Peritonitis
+                          </NavLink>
+                        </li>
 
-                          <NavLink
-                            to="/services/leptospira"
-                            className="block py-1"
-                          >
+                        <li>
+                          <NavLink to="/services/cpv" className="block py-1 hover:text-[#b50b0b]">
+                            Canine Parvovirus
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/services/leptospira" className="block py-1 hover:text-[#b50b0b]">
                             Leptospira
                           </NavLink>
-                        </div>
-                      )}
+                        </li>
+                      </ul>
                     </div>
-                    <div>
-                      <div
-                        onClick={() => toggleMenu("histopathology")}
-                        className="flex justify-between items-center cursor-pointer py-1 hover:text-[#b50b0b]"
-                      >
-                        Histopathology
-                        <span>{openMenu === "histopathology" ? "▾" : "▸"}</span>
-                      </div>
 
-                      {openMenu === "histopathology" && (
-                        <div className="ml-4">
-                          <NavLink
-                            to="/services/histopathology"
-                            className="block py-1"
-                          >
+                    {/* ---------- HISTOPATHOLOGY ---------- */}
+                    <div>
+                      <h4 className="font-semibold text-[#b50b0b] mb-2 pb-2 border-b border-gray-200">
+                        Histopathology
+                      </h4>
+                      <ul className="space-y-1.5 max-h-96 overflow-y-auto pr-2">
+                        <li>
+                          <NavLink to="/services/histopathology" className="block py-1 hover:text-[#b50b0b]">
                             Histopathology Examination
                           </NavLink>
-                          <NavLink to="/services/biopsy" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/biopsy" className="block py-1 hover:text-[#b50b0b]">
                             Biopsy
                           </NavLink>
-
-                          <NavLink to="/services/fnac" className="block py-1">
-                            FNAC (Fine Needle Aspiration Cytology)
+                        </li>
+                        <li>
+                          <NavLink to="/services/fnac" className="block py-1 hover:text-[#b50b0b]">
+                            Fine Needle Aspiration Cytology
                           </NavLink>
-                          <NavLink to="/services/abst" className="block py-1">
-                            Culture & Antibiotic Sensitivity Test (ABST)
+                        </li>
+                        <li>
+                          <NavLink to="/services/abst" className="block py-1 hover:text-[#b50b0b]">
+                            Culture & Antibiotic Sensitivity Test
                           </NavLink>
-                          <NavLink
-                            to="/services/abstAnaerobic"
-                            className="block py-1"
-                          >
-                            Culture & Antibiotic Sensitivity Test (Anaerobic)
+                        </li>
+                        <li>
+                          <NavLink to="/services/abstAnaerobic" className="block py-1 hover:text-[#b50b0b]">
+                            Culture & Antibiotic Sensitivity Test
                           </NavLink>
-                          <NavLink to="/services/sse" className="block py-1">
+                        </li>
+                        <li>
+                          <NavLink to="/services/sse" className="block py-1 hover:text-[#b50b0b]">
                             Skin Scraping Examination
                           </NavLink>
-                          <NavLink
-                            to="/services/fungalCulture"
-                            className="block py-1"
-                          >
+                        </li>
+                        <li>
+                          <NavLink to="/services/fungalCulture" className="block py-1 hover:text-[#b50b0b]">
                             Fungal Culture Test
                           </NavLink>
-
-                          <NavLink
-                            to="/services/bacterialCulture"
-                            className="block py-1"
-                          >
+                        </li>
+                        <li>
+                          <NavLink to="/services/bacterialCulture" className="block py-1 hover:text-[#b50b0b]">
                             Bacterial Culture Test
                           </NavLink>
-                        </div>
-                      )}
+                        </li>
+                      </ul>
                     </div>
 
-                    {/* DIRECT LINKS */}
-     <NavLink to="/services/pcr" className="block py-1">
-      Polymerase Chain Reaction (PCR)
-    </NavLink>
-     <NavLink to="/services/rtpcr" className="block py-1">
-      Polymerase Chain Reaction (RT - PCR)
-    </NavLink>
-     <NavLink to="/services/cbp" className="block py-1">
-      Complete Blood Picture (CBP)
-    </NavLink>
- <NavLink to="/services/act" className="block py-1">
-      Aerobic Culture Test (ACT)
-    </NavLink>
-
-    <NavLink to="/services/plt" className="block py-1">
-      Pancreatic Lipase Test (PLT)
-    </NavLink>
-
-    <NavLink to="/services/pet" className="block py-1">
-      Pancreatic Elastase (PE)
-    </NavLink>
+                    {/* ---------- OTHER TESTS ---------- */}
+                    <div>
+                      <h4 className="font-semibold text-[#b50b0b] mb-2 pb-2 border-b border-gray-200">
+                        Other Tests
+                      </h4>
+                      <ul className="space-y-1.5">
+                        <li>
+                          <NavLink to="/services/pcr" className="block py-1 hover:text-[#b50b0b]">
+                            Polymerase Chain Reaction
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/services/rtpcr" className="block py-1 hover:text-[#b50b0b]">
+                            Polymerase Chain Reaction
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/services/cbp" className="block py-1 hover:text-[#b50b0b]">
+                            Complete Blood Picture
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/services/act" className="block py-1 hover:text-[#b50b0b]">
+                            Aerobic Culture Test
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/services/plt" className="block py-1 hover:text-[#b50b0b]">
+                            Pancreatic Lipase Test
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink to="/services/pet" className="block py-1 hover:text-[#b50b0b]">
+                            Pancreatic Elastase
+                          </NavLink>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </li>
 
-                {/*shop*/}
+                {/* SHOP */}
                 <li
                   ref={(el) => (navRef.current[3] = el)}
                   data-path="/shop"
@@ -570,7 +510,7 @@ const CONTACT_INDEX = 4;
                   </NavLink>
                 </li>
 
-                {/* CONTACT LAST */}
+                {/* CONTACT */}
                 <li
                   ref={(el) => (navRef.current[4] = el)}
                   data-path="/contact"
@@ -639,7 +579,7 @@ const CONTACT_INDEX = 4;
         </div>
       </div>
 
-      {/* MOBILE SIDEBAR */}
+      {/* MOBILE SIDEBAR (unchanged — accordion is still the right pattern at narrow widths) */}
       <div
         className={`fixed top-0 right-0 h-full w-[280px] bg-white shadow-lg z-50 transform transition-transform duration-300 ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}
       >
@@ -663,7 +603,7 @@ const CONTACT_INDEX = 4;
           </NavLink>
         </div>
 
-        <ul className="mt-6 space-y-4 px-5">
+        <ul className="mt-6 space-y-4 px-5 overflow-y-auto max-h-[calc(100vh-260px)]">
           {links.map((link) => (
             <li key={link.path}>
               <NavLink to={link.path} onClick={() => setMobileOpen(false)}>
@@ -707,7 +647,7 @@ const CONTACT_INDEX = 4;
                           to="/services/cbc"
                           onClick={() => setMobileOpen(false)}
                         >
-                          Complete Blood Count (CBC)
+                          Complete Blood Count
                         </NavLink>
                       </li>
                     </ul>
@@ -731,113 +671,94 @@ const CONTACT_INDEX = 4;
                   {mobileMenu === "biochemistry" && (
                     <ul className="ml-4">
                       <NavLink to="/services/kft" className="block py-1">
-                            Kidney Function Test (KFT)
-                          </NavLink>
+                        Kidney Function Test
+                      </NavLink>
 
-                                                <NavLink to="/services/lft" className="block py-1">
-                            Liver Function Test (LFT)
-                          </NavLink>
+                      <NavLink to="/services/lft" className="block py-1">
+                        Liver Function Test
+                      </NavLink>
 
-                          <NavLink to="/services/ast" className="block py-1">
-                            AST / ALT / ALP / Total Protein / Albumin /
-                            Bilirubin
-                          </NavLink>
+                      <NavLink to="/services/ast" className="block py-1">
+                        AST / ALT / ALP / Total Protein / Albumin / Bilirubin
+                      </NavLink>
 
-                          <NavLink to="/services/urea" className="block py-1">
-                            Serum Creatinine / Urea / Uric Acid
-                          </NavLink>
+                      <NavLink to="/services/urea" className="block py-1">
+                        Serum Creatinine / Urea / Uric Acid
+                      </NavLink>
 
-                          <NavLink to="/services/t3" className="block py-1">
-                            Canine Specific T3
-                          </NavLink>
+                      <NavLink to="/services/t3" className="block py-1">
+                        Canine Specific T3
+                      </NavLink>
 
-                          <NavLink to="/services/tsh" className="block py-1">
-                            Canine Specific TSH
-                          </NavLink>
+                      <NavLink to="/services/tsh" className="block py-1">
+                        Canine Specific TSH
+                      </NavLink>
 
-                     <NavLink to="/services/t4" className="block py-1">
-                            Free T4
-                          </NavLink>
-                          <NavLink
-                            to="/services/totalt4"
-                            className="block py-1"
-                          >
-                            Total T4
-                          </NavLink>
-                          <NavLink
-                            to="/services/thyroidProfile"
-                            className="block py-1"
-                          >
-                            Complete Thyroid Profile (Free T4, Total T4, T3,
-                            TSH)
-                          </NavLink>
+                      <NavLink to="/services/t4" className="block py-1">
+                        Free T4
+                      </NavLink>
+                      <NavLink to="/services/totalt4" className="block py-1">
+                        Total T4
+                      </NavLink>
+                      <NavLink
+                        to="/services/thyroidProfile"
+                        className="block py-1"
+                      >
+                        Complete Thyroid Profile (Free T4, Total T4, T3, TSH)
+                      </NavLink>
 
                       <NavLink to="/services/ldh" className="block py-1">
-                            LDH - Lactate Dehydrogenase
-                          </NavLink>
+                        LDH - Lactate Dehydrogenase
+                      </NavLink>
 
-                          <NavLink to="/services/rbs" className="block py-1">
-                            Random Blood Sugar
-                          </NavLink>
+                      <NavLink to="/services/rbs" className="block py-1">
+                        Random Blood Sugar
+                      </NavLink>
 
                       <NavLink to="/services/sl" className="block py-1">
-                            Serum Lipase
-                          </NavLink>
+                        Serum Lipase
+                      </NavLink>
 
-                          <NavLink to="/services/sa" className="block py-1">
-                            Serum Analysis
-                          </NavLink>
-                          <NavLink to="/services/b12" className="block py-1">
-                            Vitamin B12
-                          </NavLink>
+                      <NavLink to="/services/sa" className="block py-1">
+                        Serum Analysis
+                      </NavLink>
+                      <NavLink to="/services/b12" className="block py-1">
+                        Vitamin B12
+                      </NavLink>
 
-                          <NavLink to="/services/d" className="block py-1">
-                            Vitamin D
-                          </NavLink>
-                          <NavLink
-                            to="/services/troponinI"
-                            className="block py-1"
-                          >
-                            Cardiac Troponin I
-                          </NavLink>
-                          <NavLink
-                            to="/services/troponinT"
-                            className="block py-1"
-                          >
-                            Cardiac Troponin T
-                          </NavLink>
-                          <NavLink
-                            to="/services/progesterone"
-                            className="block py-1"
-                          >
-                            Progesterone Test
-                          </NavLink>
-                          <NavLink to="/services/crp" className="block py-1">
-                            C-Reactive Protein (CRP)
-                          </NavLink>
-                          <NavLink
-                            to="/services/calcium"
-                            className="block py-1"
-                          >
-                            Serum Calcium Test
-                          </NavLink>
-                          <NavLink to="/services/sodium" className="block py-1">
-                            Serum Sodium Test
-                          </NavLink>
-                          <NavLink
-                            to="/services/potassium"
-                            className="block py-1"
-                          >
-                            Serum Potassium Test
-                          </NavLink>
-                          <NavLink to="/services/ldh" className="block py-1">
-                            Lactate Dehydrogenase (LDH)
-                          </NavLink>
-                          <NavLink to="/services/cpl" className="block py-1">
-                            Canine Pancreatic Lipase (cPL)
-                          </NavLink>
-
-
+                      <NavLink to="/services/d" className="block py-1">
+                        Vitamin D
+                      </NavLink>
+                      <NavLink to="/services/troponinI" className="block py-1">
+                        Cardiac Troponin I
+                      </NavLink>
+                      <NavLink to="/services/troponinT" className="block py-1">
+                        Cardiac Troponin T
+                      </NavLink>
+                      <NavLink
+                        to="/services/progesterone"
+                        className="block py-1"
+                      >
+                        Progesterone Test
+                      </NavLink>
+                      <NavLink to="/services/crp" className="block py-1">
+                        C-Reactive Protein (CRP)
+                      </NavLink>
+                      <NavLink to="/services/calcium" className="block py-1">
+                        Serum Calcium Test
+                      </NavLink>
+                      <NavLink to="/services/sodium" className="block py-1">
+                        Serum Sodium Test
+                      </NavLink>
+                      <NavLink to="/services/potassium" className="block py-1">
+                        Serum Potassium Test
+                      </NavLink>
+                      <NavLink to="/services/ldh" className="block py-1">
+                        Lactate Dehydrogenase
+                      </NavLink>
+                      <NavLink to="/services/cpl" className="block py-1">
+                        Canine Pancreatic Lipase
+                      </NavLink>
                     </ul>
                   )}
                 </li>
@@ -858,7 +779,9 @@ const CONTACT_INDEX = 4;
 
                   {mobileMenu === "molecular" && (
                     <ul className="ml-4">
-                      <NavLink to="/services/cdv">Canine Distemper Virus - RT-PCR</NavLink>
+                      <NavLink to="/services/cdv">
+                        Canine Distemper Virus - RT-PCR
+                      </NavLink>
 
                       {/* TICK PANEL */}
                       <li>
@@ -876,47 +799,27 @@ const CONTACT_INDEX = 4;
 
                         {mobileSubMenu === "tick" && (
                           <ul className="ml-4">
-    
-                            <NavLink
-                              to="/services/ctfpbc"
-                              className="block py-1"
-                            >
+                            <NavLink to="/services/ctfpbc" className="block py-1">
                               Babesia Canis
                             </NavLink>
-                            <NavLink
-                              to="/services/ctfpbr"
-                              className="block py-1"
-                            >
+                            <NavLink to="/services/ctfpbr" className="block py-1">
                               Babesia Rossi
                             </NavLink>
-                            <NavLink
-                              to="/services/ctfpbv"
-                              className="block py-1"
-                            >
+                            <NavLink to="/services/ctfpbv" className="block py-1">
                               Babesia Vogeli
                             </NavLink>
-                            <NavLink
-                              to="/services/ctfphc"
-                              className="block py-1"
-                            >
+                            <NavLink to="/services/ctfphc" className="block py-1">
                               Hepatozoon Canis
                             </NavLink>
-                            <NavLink
-                              to="/services/ctfpec"
-                              className="block py-1"
-                            >
+                            <NavLink to="/services/ctfpec" className="block py-1">
                               Ehrlichia Canis
                             </NavLink>
-                            <NavLink
-                              to="/services/ctfpap"
-                              className="block py-1"
-                            >
+                            <NavLink to="/services/ctfpap" className="block py-1">
                               Anaplasma Platys
                             </NavLink>
                           </ul>
                         )}
                       </li>
-
 
                       <li>
                         <div
@@ -933,51 +836,43 @@ const CONTACT_INDEX = 4;
 
                         {mobileSubMenu === "feline" && (
                           <ul className="ml-4">
-     <NavLink
-                                  to="/services/fiv"
-                                  className="block py-1"
-                                >
-                                  Feline Immunodeficiency Virus (FIV)
-                                </NavLink>
-                                <NavLink
-                                  to="/services/felv"
-                                  className="block py-1"
-                                >
-                                  Feline Leukemia Virus (FeLV)
-                                </NavLink>
-
-                                <NavLink
-                                  to="/services/babesiafelis"
-                                  className="block py-1"
-                                >
-                                  Feline Babesia felis
-                                </NavLink>
-
-                            <NavLink
-                                  to="/services/anaplasmaphagocytophilum"
-                                  className="block py-1"
-                                >
-                                  Feline Anaplasma phagocytophilum
-                                </NavLink>
-
-                                <NavLink
-                                  to="/services/calicivirus"
-                                  className="block py-1"
-                                >
-                                  Feline Calicivirus (FCV)
+                            <NavLink to="/services/fiv" className="block py-1">
+                              Feline Immunodeficiency Virus
                             </NavLink>
-                            <NavLink
-                                  to="/services/fip"
-                                  className="block py-1"
-                                >
-                                  Feline Infectious Peritonitis (FIP)
-                                </NavLink>
+                            <NavLink to="/services/felv" className="block py-1">
+                              Feline Leukemia Virus
+                            </NavLink>
 
+                            <NavLink
+                              to="/services/babesiafelis"
+                              className="block py-1"
+                            >
+                              Feline Babesia felis
+                            </NavLink>
+
+                            <NavLink
+                              to="/services/anaplasmaphagocytophilum"
+                              className="block py-1"
+                            >
+                              Feline Anaplasma phagocytophilum
+                            </NavLink>
+
+                            <NavLink
+                              to="/services/calicivirus"
+                              className="block py-1"
+                            >
+                              Feline Calicivirus
+                            </NavLink>
+                            <NavLink to="/services/fip" className="block py-1">
+                              Feline Infectious Peritonitis
+                            </NavLink>
                           </ul>
                         )}
                       </li>
 
-                      <NavLink to="/services/ap">Anaplasma Phagocytophilum</NavLink>
+                      <NavLink to="/services/ap">
+                        Anaplasma Phagocytophilum
+                      </NavLink>
                       <NavLink to="/services/cpv">CPV</NavLink>
                       <NavLink to="/services/leptospira">Leptospira</NavLink>
                     </ul>
@@ -1001,68 +896,67 @@ const CONTACT_INDEX = 4;
                   {mobileMenu === "histopathology" && (
                     <ul className="ml-4">
                       <NavLink
-                            to="/services/histopathology"
-                            className="block py-1"
-                          >
-                            Histopathology Examination
-                          </NavLink>
-                          <NavLink to="/services/biopsy" className="block py-1">
-                            Biopsy
-                          </NavLink>
+                        to="/services/histopathology"
+                        className="block py-1"
+                      >
+                        Histopathology Examination
+                      </NavLink>
+                      <NavLink to="/services/biopsy" className="block py-1">
+                        Biopsy
+                      </NavLink>
 
-                          <NavLink to="/services/fnac" className="block py-1">
-                            FNAC (Fine Needle Aspiration Cytology)
-                          </NavLink>
-                          <NavLink to="/services/abst" className="block py-1">
-                            Culture & Antibiotic Sensitivity Test (ABST)
-                          </NavLink>
-                          <NavLink
-                            to="/services/abstAnaerobic"
-                            className="block py-1"
-                          >
-                            Culture & Antibiotic Sensitivity Test (Anaerobic)
-                          </NavLink>
-                          <NavLink to="/services/sse" className="block py-1">
-                            Skin Scraping Examination
-                          </NavLink>
-                          <NavLink
-                            to="/services/fungalCulture"
-                            className="block py-1"
-                          >
-                            Fungal Culture Test
-                          </NavLink>
+                      <NavLink to="/services/fnac" className="block py-1">
+                        Fine Needle Aspiration Cytology
+                      </NavLink>
+                      <NavLink to="/services/abst" className="block py-1">
+                        Culture & Antibiotic Sensitivity Test
+                      </NavLink>
+                      <NavLink
+                        to="/services/abstAnaerobic"
+                        className="block py-1"
+                      >
+                        Culture & Antibiotic Sensitivity Test
+                      </NavLink>
+                      <NavLink to="/services/sse" className="block py-1">
+                        Skin Scraping Examination
+                      </NavLink>
+                      <NavLink
+                        to="/services/fungalCulture"
+                        className="block py-1"
+                      >
+                        Fungal Culture Test
+                      </NavLink>
 
-                          <NavLink
-                            to="/services/bacterialCulture"
-                            className="block py-1"
-                          >
-                            Bacterial Culture Test
-                          </NavLink>
-
+                      <NavLink
+                        to="/services/bacterialCulture"
+                        className="block py-1"
+                      >
+                        Bacterial Culture Test
+                      </NavLink>
                     </ul>
                   )}
                 </li>
                 <li>
-                    <NavLink to="/services/pcr" className="block py-1">
-      Polymerase Chain Reaction (PCR)
-    </NavLink>
-     <NavLink to="/services/rtpcr" className="block py-1">
-      Polymerase Chain Reaction (RT - PCR)
-    </NavLink>
-     <NavLink to="/services/cbp" className="block py-1">
-      Complete Blood Picture (CBP)
-    </NavLink>
- <NavLink to="/services/act" className="block py-1">
-      Aerobic Culture Test (ACT)
-    </NavLink>
+                  <NavLink to="/services/pcr" className="block py-1">
+                    Polymerase Chain Reaction
+                  </NavLink>
+                  <NavLink to="/services/rtpcr" className="block py-1">
+                    Polymerase Chain Reaction
+                  </NavLink>
+                  <NavLink to="/services/cbp" className="block py-1">
+                    Complete Blood Picture
+                  </NavLink>
+                  <NavLink to="/services/act" className="block py-1">
+                    Aerobic Culture Test
+                  </NavLink>
 
-    <NavLink to="/services/plt" className="block py-1">
-      Pancreatic Lipase Test (PLT)
-    </NavLink>
+                  <NavLink to="/services/plt" className="block py-1">
+                    Pancreatic Lipase Test
+                  </NavLink>
 
-    <NavLink to="/services/pet" className="block py-1">
-      Pancreatic Elastase (PE)
-    </NavLink>
+                  <NavLink to="/services/pet" className="block py-1">
+                    Pancreatic Elastase
+                  </NavLink>
                 </li>
               </ul>
             </div>

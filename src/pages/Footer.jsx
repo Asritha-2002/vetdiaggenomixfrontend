@@ -196,9 +196,9 @@ const Footer = () => {
           <div className="flex gap-[5px] items-start">
             <MapPin size={20} className="text-gray-600" />
             <p>
-              D.No. 74-7-6/2, SB House,
+              D. No. 59a, 73/1-11, High School Rd, Maruti Colony
               <br />
-              Patamata, Vijayawada,520010
+              Patamata, Benz Circle, Vijayawada, Andhra Pradesh 520010.
             </p>
           </div>
           <div className="flex gap-[5px] items-start">

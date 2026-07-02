@@ -13,8 +13,8 @@ const LocationsSection = () => {
   const locations = [
     {
       name: "Vijayawada",
-      mapEmbed : "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d22276.62988354043!2d80.6603204!3d16.4916112!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35fb67d66f4829%3A0xec9ce81b957a393!2sVetdiag%20Genomix%20Pvt.Ltd!5e1!3m2!1sen!2sin!4v1777264314418!5m2!1sen!2sin",
-      address: "SB House, D.No. 74-7-6/2, Donka Rd, JD Nagar, Patamata, Vijayawada, Andhra Pradesh 520010",
+      mapEmbed : "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2784.4663979785387!2d80.66723107514508!3d16.499416984244267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDI5JzU3LjkiTiA4MMKwNDAnMTEuMyJF!5e1!3m2!1sen!2sin!4v1782989381746!5m2!1sen!2sin",
+      address: "D. No. 59a, 73/1-11, High School Rd, Maruti Colony, Patamata, Benz Circle, Vijayawada, Andhra Pradesh 520010.",
       start:"Mon - Sat: 08:00 AM - 08:00 PM",
       close:"Sun: 08:00 AM - 01:00 PM",
       contact:"+91 6301867331",
@@ -23,7 +23,7 @@ const LocationsSection = () => {
     },
     {
       name: "Yalamanchili",
-      mapEmbed : "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d22276.62988354043!2d80.6603204!3d16.4916112!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35fb67d66f4829%3A0xec9ce81b957a393!2sVetdiag%20Genomix%20Pvt.Ltd!5e1!3m2!1sen!2sin!4v1777264314418!5m2!1sen!2sin",
+      mapEmbed : "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2784.4663979785387!2d80.66723107514508!3d16.499416984244267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDI5JzU3LjkiTiA4MMKwNDAnMTEuMyJF!5e1!3m2!1sen!2sin!4v1782989381746!5m2!1sen!2sin",
       address: "456 NH Road, Yalamanchili, Andhra Pradesh, India",
       start:"Mon - Sat: 08:00 AM - 08:00 PM",
       close:"Sun: 08:00 AM - 01:00 PM",
@@ -33,7 +33,7 @@ const LocationsSection = () => {
     },
     {
       name: "Visakhapatnam",
-      mapEmbed : "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d22276.62988354043!2d80.6603204!3d16.4916112!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35fb67d66f4829%3A0xec9ce81b957a393!2sVetdiag%20Genomix%20Pvt.Ltd!5e1!3m2!1sen!2sin!4v1777264314418!5m2!1sen!2sin",
+      mapEmbed : "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2784.4663979785387!2d80.66723107514508!3d16.499416984244267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTbCsDI5JzU3LjkiTiA4MMKwNDAnMTEuMyJF!5e1!3m2!1sen!2sin!4v1782989381746!5m2!1sen!2sin",
       address: "789 Beach Road, Visakhapatnam, Andhra Pradesh, India",
       start:"Mon - Sat: 08:00 AM - 08:00 PM",
       close:"Sun: 08:00 AM - 01:00 PM",
